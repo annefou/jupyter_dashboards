@@ -20,4 +20,4 @@ Select the new environment, Select Not installed, Search jupyter_dashboards, Sel
 Click on Channels, Add conda-forge. So it is possible to install the package ipyleaflet (select Not installed, search ipyleaflet, apply).
 
 
-In order to install lnetatmo, first click on the environment, click on the arrow, click Open Terminal, type pip install lnetatmo.
+In order to install patatmo, first click on the environment, click on the arrow, click Open Terminal, type pip install patatmo.
