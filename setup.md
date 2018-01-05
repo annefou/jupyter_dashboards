@@ -13,6 +13,8 @@ Linux: on the Terminal type anaconda-navigator
 Windows: start anaconda-navigator from the menu
 Mac: 
 
+On Windows: change the default browser from Explorer to Chrome or Firefox. In Chrome, Chrome Browser > Settings (Scroll all the way to the bottom) > Change Default browser to Chrome > New window would pop up. Change the default browser there!
+
 Select Environments, Create in order to Create a new environment with workhop-dashboard, Select Packages Python 3.6, click ok.
 
 Select the new environment, Select Not installed, Search jupyter_dashboards, Select all possible jupyter_dashboards (jupyter_dashboards_bundlers, jupyter_dashboards), Apply.
