@@ -15,8 +15,6 @@ keypoints:
 
 # What is a jupyter notebook?
 
-Slides for a short [Introduction on Jupyter](https://annefou.github.io/jupyter_dashboards/slides/Jupyter_Intro_Background.slides.html#/).
-
 Jupyter notebook, formerly known as [IPython](https://ipython.org/) notebook (or Interactive Python), is a flexible and powerful open source research tool that can help you keep a narrative of your coding process. The name Jupyter is an acronym of the three core languages it was designed for: [JUlia](https://julialang.org/), [PYThon](https://www.python.org/), and [R](https://www.r-project.org/). Project Jupyter supports interactive data science and scientific computing across more than 40 programming languages.
 
 <img src="../images/Jupyter_logo.PNG" style="width: 500px;"/>
@@ -187,8 +185,6 @@ Jupyter Notebooks/dashboards are great because they **facilitate**:
 
 # Knowing your way around jupyter dashboard
 
-
-# Familiarize Yourself with Jupyter
 The Jupyter Notebook is a web application that allows you to create and share documents that contain live code, equations, visualizations and explanatory text. The following links may be useful in gaining a basic understanding of Jupyter and how to work in Jupyter notebook:
 1. [http://jupyter.org/about.html](http://jupyter.org/about.html): general information about Jupyter
 2. [https://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/execute.html](https://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/execute.html): starting guide
