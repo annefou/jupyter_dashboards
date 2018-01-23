@@ -373,7 +373,7 @@ To familiarise participants with the notebook environment, build up a simple not
 - Split & merge cells
 - Stop a cell
 
-See [Navigating jupyter notebook instructions for instructors](http://nbviewer.jupyter.org/gist/annefou/073c70194814ae9d28f8d7e139e9e852) for reference.
+See [Navigating jupyter notebook instructions for instructors](https://github.com/annefou/jupyter_dashboards/blob/gh-pages/notebooks/navigating_the_notebook-instructor_script.ipynb) for reference.
 
 
 # Documentation and references
