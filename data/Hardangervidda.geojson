@@ -5,7 +5,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [4.1697035, 67.1597725]
+        "coordinates": [7.485141, 60.571146]
       },
       "properties": {
         "name": "Sensor-1",
@@ -20,7 +20,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [4.1728406, 67.1712373]
+        "coordinates": [7.490383, 60.581501]
       },
       "properties": {
         "name": "Sensor-2",
@@ -35,7 +35,22 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [4.1811692, 67.210258]
+        "coordinates": [7.502778, 60.576852]
+      },
+      "properties": {
+        "name": "Sensor-3",
+        "description": "Middaselvi dsicharge",
+        "country.etc": "NO",
+        "waspmote_id": "3F7C67057C105419",
+        "pop": " 125121",
+        "capital": "0"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [7.503957, 60.616694]
       },
       "properties": {
         "name": "Sensor-4",
@@ -50,7 +65,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [4.1728406, 6.71712373]
+        "coordinates": [7.490383, 60.581501]
       },
       "properties": {
         "name": "Sensor-5",
@@ -65,7 +80,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [4.1940131, 67.1841419]
+        "coordinates": [7.528482, 60.593514]
       },
       "properties": {
         "name": "Sensor-6",
