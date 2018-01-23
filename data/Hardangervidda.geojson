@@ -11,9 +11,7 @@
         "name": "Sensor-1",
         "description": "Appelsinhytta",
         "country.etc": "NO",
-        "waspmote_id": "023D67057C105474",
-        "pop": " 125121",
-        "capital": "0"
+        "waspmote_id": "023D67057C105474"
       }
     },
     {
@@ -26,9 +24,7 @@
         "name": "Sensor-2",
         "description": "Hills",
         "country.etc": "NO",
-        "waspmote_id": "1F566F057C105487",
-        "pop": " 125121",
-        "capital": "0"
+        "waspmote_id": "1F566F057C105487"
       }
     },
     {
@@ -39,11 +35,9 @@
       },
       "properties": {
         "name": "Sensor-3",
-        "description": "Middaselvi dsicharge",
+        "description": "Middaselvi discharge",
         "country.etc": "NO",
-        "waspmote_id": "3F7C67057C105419",
-        "pop": " 125121",
-        "capital": "0"
+        "waspmote_id": "3F7C67057C105419"
       }
     },
     {
@@ -56,9 +50,7 @@
         "name": "Sensor-4",
         "description": "Finselvi discharge",
         "country.etc": "NO",
-        "waspmote_id": "40516F057C105437",
-        "pop": " 125121",
-        "capital": "0"
+        "waspmote_id": "40516F057C105437"
       }
     },
     {
@@ -71,9 +63,7 @@
         "name": "Sensor-5",
         "description": "Hills",
         "country.etc": "NO",
-        "waspmote_id": "667767057C10548E",
-        "pop": " 125121",
-        "capital": "0"
+        "waspmote_id": "667767057C10548E"
       }
     },
     {
@@ -86,9 +76,7 @@
         "name": "Sensor-6",
         "description": "Drift lower lidar",
         "country.etc": "NO",
-        "waspmote_id": "6D4467057C1054DC",
-        "pop": " 125121",
-        "capital": "0"
+        "waspmote_id": "6D4467057C1054DC"
       }
     }
   ]
