@@ -15,12 +15,7 @@
         "pop": " 125121",
         "capital": "0"
       }
-    }
-  ]
-}
-{
-  "type": "FeatureCollection",
-  "features": [
+    },
     {
       "type": "Feature",
       "geometry": {
@@ -35,32 +30,7 @@
         "pop": " 125121",
         "capital": "0"
       }
-    }
-  ]
-}
-{
-  "type": "FeatureCollection",
-  "features": [
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [4.1795137, 67.1659057]
-      },
-      "properties": {
-        "name": "Sensor-3",
-        "description": "Middaselvi dsicharge",
-        "country.etc": "NO",
-        "waspmote_id": "3F7C67057C105419",
-        "pop": " 125121",
-        "capital": "0"
-      }
-    }
-  ]
-}
-{
-  "type": "FeatureCollection",
-  "features": [
+    },
     {
       "type": "Feature",
       "geometry": {
@@ -75,12 +45,7 @@
         "pop": " 125121",
         "capital": "0"
       }
-    }
-  ]
-}
-{
-  "type": "FeatureCollection",
-  "features": [
+    },
     {
       "type": "Feature",
       "geometry": {
@@ -95,12 +60,7 @@
         "pop": " 125121",
         "capital": "0"
       }
-    }
-  ]
-}
-{
-  "type": "FeatureCollection",
-  "features": [
+    },
     {
       "type": "Feature",
       "geometry": {
