@@ -361,6 +361,21 @@ Since the Jupyter notebook doesn't have a separate window to display the variabl
 ~~~
 {: .python}
 
+# Get familiar with Jupyter notebooks
+
+To familiarise participants with the notebook environment, build up a simple notebook from scratch demonstrating the following operations:
+
+- Insert & delete cells
+- Change cell type (& know different cell types)
+- Run a single cell from taskbar & keyboard shortcut (shift + Enter)
+- Run multiples cells, all cells
+- Re-order cells
+- Split & merge cells
+- Stop a cell
+
+See [Navigating jupyter notebook instructions for instructors](http://nbviewer.jupyter.org/gist/annefou/073c70194814ae9d28f8d7e139e9e852) for reference.
+
+
 # Documentation and references
 
 ## Curious to learn more? Refer to these Jupyter documents:
