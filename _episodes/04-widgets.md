@@ -1,5 +1,5 @@
 ---
-title: "Jupyter widgets"
+title: "More on Jupyter widgets"
 teaching: 0
 exercises: 0
 questions:
