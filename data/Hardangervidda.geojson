@@ -5,11 +5,113 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [7.416665, 60.0499998]
+        "coordinates": [4.1697035, 67.1597725]
       },
       "properties": {
-        "name": "HARDANGERVIDDA NATIONAL PARK, NORWAY",
+        "name": "Sensor-1",
+        "description": "Appelsinhytta",
         "country.etc": "NO",
+        "waspmote_id": "023D67057C105474",
+        "pop": " 125121",
+        "capital": "0"
+      }
+    }
+  ]
+}
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [4.1728406, 67.1712373]
+      },
+      "properties": {
+        "name": "Sensor-2",
+        "description": "Hills",
+        "country.etc": "NO",
+        "waspmote_id": "1F566F057C105487",
+        "pop": " 125121",
+        "capital": "0"
+      }
+    }
+  ]
+}
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [4.1795137, 67.1659057]
+      },
+      "properties": {
+        "name": "Sensor-3",
+        "description": "Middaselvi dsicharge",
+        "country.etc": "NO",
+        "waspmote_id": "3F7C67057C105419",
+        "pop": " 125121",
+        "capital": "0"
+      }
+    }
+  ]
+}
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [4.1811692, 67.210258]
+      },
+      "properties": {
+        "name": "Sensor-4",
+        "description": "Finselvi discharge",
+        "country.etc": "NO",
+        "waspmote_id": "40516F057C105437",
+        "pop": " 125121",
+        "capital": "0"
+      }
+    }
+  ]
+}
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [4.1728406, 6.71712373]
+      },
+      "properties": {
+        "name": "Sensor-5",
+        "description": "Hills",
+        "country.etc": "NO",
+        "waspmote_id": "667767057C10548E",
+        "pop": " 125121",
+        "capital": "0"
+      }
+    }
+  ]
+}
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [4.1940131, 67.1841419]
+      },
+      "properties": {
+        "name": "Sensor-6",
+        "description": "Drift lower lidar",
+        "country.etc": "NO",
+        "waspmote_id": "6D4467057C1054DC",
         "pop": " 125121",
         "capital": "0"
       }
