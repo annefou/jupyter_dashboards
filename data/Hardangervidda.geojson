@@ -1,0 +1,18 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [7.416665, 60.0499998]
+      },
+      "properties": {
+        "name": "HARDANGERVIDDA NATIONAL PARK, NORWAY",
+        "country.etc": "NO",
+        "pop": " 125121",
+        "capital": "0"
+      }
+    }
+  ]
+}
