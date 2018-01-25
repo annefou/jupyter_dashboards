@@ -84,8 +84,6 @@ HTML('<iframe width="560"  height="315" src="http://www.bt.no/tv/embed/?id=10052
 
 Here we display the entire webpage [http://www.bt.no/tv/embed/?id=100521](http://www.bt.no/tv/embed/?id=100521).
 
-<iframe width="560" height="315" src="http://www.bt.no/tv/embed/?id=100521" frameborder="0" allowfullscreen></iframe>
-
 ## Select camera with python interactive widget
 
 ## From jupyter notebook to jupyter dashboard
