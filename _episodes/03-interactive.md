@@ -86,8 +86,169 @@ Here we display the entire webpage [http://www.bt.no/tv/embed/?id=100521](http:/
 
 ## Select camera with python interactive widget
 
+Laura does not want to display both webcam images at the same time and would like users to be able to choose which one to display. Therefore we need to interact with our notebook and be able to choose between:
+
+- Finse Research Centre webcams
+- Finse Railway Station livestream
+
+Let's use python interactive widgets.  To make use of Selection widgets, we need to install `ipywidgets` python package.
+
+Follow the instructor and install `ipywidgets` in `jupyter_dashboards` environment through **Anaconda Navigator**.
+
+Then in your jupyter notebook:
+
+~~~
+import ipywidgets as widgets
+~~~
+{: .python}
+
+> ## Use your sticky note
+>  Use a **green sticky note** to signal that you have successfully installed this package
+> or the **red sticky note** if you encountered any problems.
+{: .callout}
+
+Now let's try different Selection widgets:
+
+~~~
+select = widgets.Select(
+    options=['Finse Railway Station', 'Finse Research Centre'],
+    value='Finse Research Centre',
+    rows=2,
+    description='Webcam:',
+    disabled=False
+)
+
+display(select)
+~~~
+{: .python}
+
+~~~
+radio = widgets.RadioButtons(
+    options=['Finse Railway Station', 'Finse Research Centre'],
+    value='Finse Research Centre',
+    description='Webcam:',
+    disabled=False
+)
+
+display(radio)
+~~~
+{: .python}
+
+> ## How to display several widgets in the same cell
+>  We used `display` to show our widget. You can pass more than one widget to display all of them in the same cell:
+> ~~~
+> select = widgets.Select(
+>    options=['Finse Railway Station', 'Finse Research Centre'],
+>    value='Finse Research Centre',
+>    rows=2,
+>    description='Webcam:',
+>    disabled=False
+> )
+>
+> radio = widgets.RadioButtons(
+>    options=['Finse Railway Station', 'Finse Research Centre'],
+>    value='Finse Research Centre',
+>    description='Webcam:',
+>    disabled=False
+> )
+>
+> display(select, radio)
+> ~~~
+> {: .python}
+{: .callout}
+
+Many more types of "[Selection widgets](http://ipywidgets.readthedocs.io/en/stable/examples/Widget%20List.html#Select)" can be used. Have a look at the [documentation](http://ipywidgets.readthedocs.io/en/stable/examples/Widget%20List.html#Select) to get more information.
+
+Laura is quite happy with Radiobuttons. Now we need to display the proper webcam when a user select Finse Railway station or Finse Research Centre. The easiest way to do it is to define another widget to display HTML and to link the radiobutton widget with the HTML widget.
+
+Let's first see how to define an HTML widget:
+
+~~~
+webcam = widgets.HTML(
+    value='<iframe width="560"  height="315" src="http://www.finse.uio.no/news/webcam/dagens.jpg"></iframe>',
+    description='Finse Research Centre',
+)
+
+display(webcam)
+~~~
+{: .python}
+
+In `value`, you need to pass HTML code, same as we did before.
+
+<figure>
+ <a href="http://www.finse.uio.no/news/webcam/dagens.jpg">
+	<img src="http://www.finse.uio.no/news/webcam/dagens.jpg"></a>
+</figure>
+
+To handle changes, widgets have a method (function) called `observe` which can be used to register a callback function.
+
+ A callback function is a function which is:
+- passed as an argument to another function, and,
+- is invoked after some kind of event.
+
+ Remember our widget `button`. When calling its method `observe`, we would like to call another function `handle_button_change`. This function will modify the value of our second widget `webcam` depending on the value of the widget button:
+
+~~~
+button = widgets.RadioButtons(
+    options=['Finse Railway Station', 'Finse Research Centre'],
+    value='Finse Research Centre',
+    description='Webcam:',
+    disabled=False
+)
+
+webcam = widgets.HTML(
+    value='<iframe width="560"  height="315" src="http://www.finse.uio.no/news/webcam/dagens.jpg"></iframe>',
+)
+
+def handle_button_change(change):
+    if change['new'] == 'Finse Research Centre':
+        webcam.value = '<iframe width="560"  height="315" src="http://www.finse.uio.no/news/webcam/dagens.jpg"></iframe>'
+    else:
+        webcam.value = '<iframe id="iframe" width="560"  height="315" src="http://www.bt.no/tv/embed/?id=100521" allowfullscreen="true"></iframe>'
+
+button.observe(handle_button_change, names='value')
+
+display(webcam, button)
+~~~
+{: .python}
+
+The name of the callback `handle_button_change` is arbitrary and can be changed but the same name needs to be passed to `observe` method of `button` widget.
+
 ## From jupyter notebook to jupyter dashboard
 
+Let's first add a title to our jupyter notebook. There are different ways to do; for instance:
+- change the cell type to Markdown
+- Create HTML text
+
+> ## Add a title
+>
+> - Create a new cell above our widgets cell
+> - Change its type to Mardown
+> - Add a title `Finse Data monitoring Dashboard`
+>
+{: .challenge}
+
+Let's do it by display HTML:
+
+~~~
+from IPython.display import HTML
+HTML('<h1>Finse Data monitoring Dashboard</h1>')
+~~~
+{: .python}
+
+Now go to the `dashboard View` and click on `dashboard Authoring View` as shown on the figure below:
+
+<img src="../images/dashboard_authoring_view.png" style="width: 650px;"/>
+
+Move your cells to get your title at the top and in the middle and display webcams below. Save your dashboard and close it (`Close and Halt`). Reopen it and check your dashboard layout has been restored properly (you need to execute each cell and then select `dashboard view`).
+
+When selecting `dashboard view` the code "disappears" and you should see the cell outputs only. You also have a button at the top right `Show code on hover` which you can activate or not to show the code.
+
+At the bottom of your dashboard, you should see `Hidden Cells`. We are not using them rigth now but the idea is to have the possibility to hide the output of some cells; for instance, cells we can use to compute intermediate results but are not useful to be displayed.
+
+<img src="../images/dashboard_webcams.png" style="width: 750px;"/>
+
+Use your **green** sticky note when ready or **red** sticky note if you have any problems.
 
 # Create an interactive map for plotting geospatial data
 
