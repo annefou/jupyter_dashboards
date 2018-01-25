@@ -84,15 +84,7 @@ HTML('<iframe width="560"  height="315" src="http://www.bt.no/tv/embed/?id=10052
 
 Here we display the entire webpage [http://www.bt.no/tv/embed/?id=100521](http://www.bt.no/tv/embed/?id=100521).
 
-
-
-	<iframe width="560" height="315" src="http://www.bt.no/tv/embed/?id=100521" frameborder="0" allowfullscreen></iframe>
-	<figure>
-	<figcaption><i> Livestreaming from Finse Railway webcam<br>
-	Source: http://www.bt.no/tv/embed/?id=100521</i>
-	</figcaption>
-</figure>
-
+<iframe width="560" height="315" src="http://www.bt.no/tv/embed/?id=100521" frameborder="0" allowfullscreen></iframe>
 
 ## Select camera with python interactive widget
 
