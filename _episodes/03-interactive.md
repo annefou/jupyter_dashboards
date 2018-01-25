@@ -55,7 +55,8 @@ HTML('<iframe width="560"  height="315" src="http://www.finse.uio.no/news/webcam
 {: .python}
 
 <figure>
-	<iframe width="560" height="315" src="http://www.finse.uio.no/news/webcam/dagens.jpg" frameborder="0" allowfullscreen></iframe>
+ <a href="http://www.finse.uio.no/news/webcam/dagens.jpg">
+	<img src="http://www.finse.uio.no/news/webcam/dagens.jpg"></a>
 	<figcaption><i> Most recent picture (updated every hour between 6am and 6pm) from Finse Research Centre<br>
 	Source: http://www.finse.uio.no/news/webcam</i>
 	</figcaption>
@@ -84,8 +85,9 @@ HTML('<iframe width="560"  height="315" src="http://www.bt.no/tv/embed/?id=10052
 Here we display the entire webpage [http://www.bt.no/tv/embed/?id=100521](http://www.bt.no/tv/embed/?id=100521).
 
 
-<figure>
+
 	<iframe width="560" height="315" src="http://www.bt.no/tv/embed/?id=100521" frameborder="0" allowfullscreen></iframe>
+	<figure>
 	<figcaption><i> Livestreaming from Finse Railway webcam<br>
 	Source: http://www.bt.no/tv/embed/?id=100521</i>
 	</figcaption>
