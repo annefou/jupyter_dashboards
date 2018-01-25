@@ -250,6 +250,7 @@ At the bottom of your dashboard, you should see `Hidden Cells`. We are not using
 
 Use your **green** sticky note when ready or **red** sticky note if you have any problems.
 
+
 # Create an interactive map for plotting geospatial data
 
 ## Requirements
@@ -281,6 +282,170 @@ We need to install the following python packages:
 > {: .solution}
 {: .challenge}
 
+## Display Finse Research Centre stations
+
+The locations as well as other metadata (sensor name, sensor identifier, description, etc.) of all Finse Research Centre stations are stored in [https://raw.githubusercontent.com/annefou/jupyter_dashboards/gh-pages/data/Hardangervidda.geojson](https://raw.githubusercontent.com/annefou/jupyter_dashboards/gh-pages/data/Hardangervidda.geojson) in [geojson format](http://geojson.org/). A full description of GEOJSON is out of scope now but let's have a look at the content of our file:
+
+~~~
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [7.485141, 60.571146]
+      },
+      "properties": {
+        "name": "Sensor-1",
+        "description": "Appelsinhytta",
+        "country.etc": "NO",
+        "waspmote_id": "023D67057C105474"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [7.490383, 60.581501]
+      },
+      "properties": {
+        "name": "Sensor-2",
+        "description": "Hills",
+        "country.etc": "NO",
+        "waspmote_id": "1F566F057C105487"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [7.502778, 60.576852]
+      },
+      "properties": {
+        "name": "Sensor-3",
+        "description": "Middaselvi discharge",
+        "country.etc": "NO",
+        "waspmote_id": "3F7C67057C105419"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [7.503957, 60.616694]
+      },
+      "properties": {
+        "name": "Sensor-4",
+        "description": "Finselvi discharge",
+        "country.etc": "NO",
+        "waspmote_id": "40516F057C105437"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [7.490383, 60.581501]
+      },
+      "properties": {
+        "name": "Sensor-5",
+        "description": "Hills",
+        "country.etc": "NO",
+        "waspmote_id": "667767057C10548E"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [7.528482, 60.593514]
+      },
+      "properties": {
+        "name": "Sensor-6",
+        "description": "Drift lower lidar",
+        "country.etc": "NO",
+        "waspmote_id": "6D4467057C1054DC"
+      }
+    }
+  ]
+}
+~~~
+{: .bash}
+
+How to make the same plot as we have at the beginning of the lesson?
+
+<script src="https://embed.github.com/view/geojson/annefou/jupyter_dashboards/gh-pages/data/Hardangervidda.geojson"></script>
+
+To create a geographical map, simply pass your starting coordinates to Folium:
+
+~~~
+import folium
+
+map = folium.Map(location=[60.5, 7.5])
+~~~
+{: .python}
+
+The first argument of the location is the latitude (in degrees and between -90 to 90) and the second argument is the longitude (in degrees and between -180 and 180). We centered our map around the Finse area.
+
+To display the map in your jupyter notebook:
+
+~~~
+map
+~~~
+{: .python}
+
+Now we need to add our GEOjson file `https://embed.github.com/view/geojson/annefou/jupyter_dashboards/gh-pages/data/Hardangervidda.geojson`.
+
+You can pass a GEOJSON file to `folium`:
+
+~~~
+import urllib.request
+
+url='https://raw.githubusercontent.com/annefou/jupyter_dashboards/gh-pages/data/Hardangervidda.geojson'
+# Download the file from `url`, save it in a temporary directory and get the
+# path to it (e.g. '/tmp/tmpb48zma.txt') in the `file_name` variable:
+geojson_filename, headers = urllib.request.urlretrieve(url)
+geojson = folium.GeoJson(
+    geojson_filename,
+    name='geojson'
+).add_to(map)
+
+map
+~~~
+{: .python}
+
+We added all the station locations on our interactive map and now we need to add labels (using available metadata):
+
+~~~
+map = folium.Map(location=[60.6, 7.5], zoom_start=11, tiles='Stamen Terrain')
+
+features = geojson.data['features']
+for i in range(0,len(features)):   
+    location=[features[i]['geometry']['coordinates'][1],features[i]['geometry']['coordinates'][0]]
+    name = features[i]['properties']['name']
+    opr = features[i]['properties']['waspmote_id']
+    description = features[i]['properties']['description']
+    country = features[i]['properties']['country.etc']
+    html = """
+    <p>
+      <h4>name:        """ + name + """</h4>
+      <h4>description: """ + description + """</h4>
+      <h4>country.etc: """ + country + """</h4>
+      <h4>wapsmote_id: """ + opr + """</h4>
+    </p>
+    """
+
+    iframe = folium.IFrame(html=html, width=300, height=150)
+    popup = folium.Popup(iframe, max_width=2650)
+    folium.Marker(location, popup=popup,  icon=folium.Icon(color='green',  icon='ok-sign')).add_to(map)
+
+map
+~~~
+{: .python}
+
+
+<img src="../images/map_FinseStations.png" style="width: 750px;"/>
 
 # Create an interactive table with Finse and Weather underground data
 
