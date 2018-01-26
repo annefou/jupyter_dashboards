@@ -19,16 +19,16 @@ field data from the [Finse Research Centre](http://finse.uio.no). [Finse Alpine 
 
 <script src="https://embed.github.com/view/geojson/annefou/jupyter_dashboards/gh-pages/data/Hardangervidda.geojson"></script>
 
-In addition to field data from Finse Research Centre, Laura wishes to use data from other Weather Stations available from [Weather Underground](https://www.wunderground.com/). She would need to clearly identify in her plots the data sources (Weather Underground or Finse Research Stations).
+In addition to field data from Finse Research Centre, Laura wishes to use data from other Weather Stations available freely available from [the Norwegian Meteorological Institute](https://www.met.no/en). She would need to clearly identify in her plots the data sources (Meteorological Institute or Finse Research Stations).
 
 A large variety of data is therefore available to her and Laura would like to create the following outputs to better understand her project and show what [Finse Research Centre](http://finse.uio.no) is about:
 
 
 - Stream web camera from Finse railway station and show the last image taken from the Finse Research Centre
--  Regularly create a map with temperature values (in degrees Celcius) from Weather Stations available from Weather Underground in the "Finse" region (Finse region at large)
-- Add temperature values from Finse Research Stations with a different color to clearly distinguish Weather Underground data from Finse Research Stations.
+-  Regularly create a map with temperature values (in degrees Celcius) from Weather Stations available from the Norwegian Meteorological Institute in the "Finse" region (Finse region at large)
+- Add temperature values from Finse Research Stations with a different color to clearly distinguish Norwegian Meteorological Institute data from Finse Research Stations.
 -  On the same map, allow users to select the variable to plot (temperature, wind direction, wind speed, relative humidity, pressure, etc.).
-- Create a summary table for Weather underground stations and Finse Research Centre Stations
+- Create a summary table for Norwegian Meteorological stations and Finse Research Centre Stations
 - Allow user to select a station (by clicking) and show on another plot historical data (timeserie) where the user can select the start and end date.
 - Show information on the battery of all Finse Research Stations. This will allow Laura to monitor the status of each stations (when the battery is down, she cannot receive data).
 
@@ -447,7 +447,94 @@ map
 
 <img src="../images/map_FinseStations.png" style="width: 750px;"/>
 
-# Create an interactive table with Finse and Weather underground data
+## Overlay Data from other Weather Stations available from the Norwegian Meteorological institute
+
+The data we are willing to add are freely available from [https://data.met.no](https://data.met.no) but to get access you need to get a `client identifier`.
+
+> ## Get your client identifier from [https://data.met.no/auth/requestCredentials.html](https://data.met.no/auth/requestCredentials.html)
+>
+> <img src="../images/metnoClientID.png" style="width: 750px;"/>
+>
+> Use your green sticky note when you have your client identifier or you red sticky note if you need help.
+{: .challenge}
+
+In all the example below, you need to set the variable `client_id` to the value you received:
+
+~~~
+client_id = '11111111-1111-1111-1111-111111111111'
+~~~
+{: .python}
+
+Make sure you replace with a valid `client_id`. For more information on how to create requests see the documentation [here](https://frost.met.no/concepts#getting_started).
+
+~~~
+import folium
+import requests
+
+client_id = '11111111-1111-1111-1111-111111111111'
+
+types='SensorSystem'
+
+# request all stations within a polygon (longitude latitude, ...)
+polygon = 'POLYGON((6.9 60.35,6.9 60.7,8.16 60.7, 8.16 60.35, 6.9 60.35))'
+# issue an HTTP GET request
+r = requests.get(
+        'https://frost.met.no/sources/v0.jsonld',
+        {'types': types,
+        'geometry': polygon},
+        auth=(client_id, '')
+    )
+
+
+map = folium.Map(location=[60.5, 7.5], tiles='Stamen Terrain')
+
+for item in r.json()['data']:
+        latitute=''
+        longitude=''
+        county=''
+        municipality=''
+        if 'geometry' in item:
+            latitude = item['geometry']['coordinates'][1]
+            longitude = item['geometry']['coordinates'][0]
+            location = [latitude,longitude]
+        if 'municipality' in item:
+            municipality = item['municipality']
+        if 'county' in item:
+            county = item['county']
+        html = """
+      <h4>ID: """ + item['id'] + """</h4>
+      <h4>Name: """ + item['name'] + """</h4>
+      <h4>Latitude: """ + str(latitude) + """</h4>
+      <h4>Longitude: """ + str(longitude) + """</h4>
+      <h4>Municipality: """ + str(municipality) + """</h4>
+      <h4>County: """ + str(county) + """</h4>
+      <h4>Country: """ + str(item['country']) + """</h4>
+    """
+        iframe = folium.IFrame(html=html, width=300, height=200)
+        popup = folium.Popup(iframe, max_width=2650)
+        folium.Marker(location, popup=popup,  icon=folium.Icon(color='blue',  icon='cloud')).add_to(map)
+~~~
+{: .python}
+
+> ## Default browser
+> If you wish to customize your icons, have a look at this [example](http://nbviewer.jupyter.org/github/python-visualization/folium/blob/master/examples/CustomIcon.ipynb).
+{: .callout}
+
+# Create an interactive table (beakerx)
+
+## Requirements
+
+- beakerx
+
+> ## Install beakerx using Anaconda navigator
+>
+> Use your green sticky note to signal you successfully installed `beakerx` python package or
+> your red sticky note if you need help.
+>
+{: .challenge}
+
+## Make your interactive table
+
 
 # Create interactive timeseries (2D-plot)
 
