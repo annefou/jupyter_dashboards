@@ -1,0 +1,7 @@
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - jupyter_dashboards
+  - jupyter_dashboards_bundlers
+  - folium
