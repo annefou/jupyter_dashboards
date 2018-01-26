@@ -535,6 +535,26 @@ for item in r.json()['data']:
 
 ## Make your interactive table
 
+Let's use the same json object we read from the Norwegian Meteorological Institute. For  further manipulation,
+we first convert the field "validFrom" from a string to a date (using `datetime`)
+~~~
+from pandas.io.json import json_normalize
+from datetime import datetime
+from beakerx import *
+
+data = r.json()['data']
+for element in data:
+        value = element['validFrom']
+        element['validFrom'] = datetime.strptime(value, "%Y-%M-%d")
+json_normalize(data)
+~~~
+{: .python}
+
+> ## Manipulate your interactive table
+>
+> Sort by `county`, hide columns `@type` and `geometry.@type`
+>
+{: .challenge}
 
 # Create interactive timeseries (2D-plot)
 
