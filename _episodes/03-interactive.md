@@ -259,7 +259,6 @@ We need to install the following python packages:
 - folium
 
 
-
 > ## Install folium using Anaconda navigator
 >
 > - Remember how we installed jupyter_dashboards and jupyter_dashboards_bundlers python packages in our environment jupyter_dashboards and
@@ -283,6 +282,11 @@ We need to install the following python packages:
 {: .challenge}
 
 ## Display Finse Research Centre stations
+
+
+### Requirements
+
+- urllib
 
 The locations as well as other metadata (sensor name, sensor identifier, description, etc.) of all Finse Research Centre stations are stored in [https://raw.githubusercontent.com/annefou/jupyter_dashboards/gh-pages/data/Hardangervidda.geojson](https://raw.githubusercontent.com/annefou/jupyter_dashboards/gh-pages/data/Hardangervidda.geojson) in [geojson format](http://geojson.org/). A full description of GEOJSON is out of scope now but let's have a look at the content of our file:
 
@@ -445,9 +449,25 @@ map
 {: .python}
 
 
-<img src="../images/map_FinseStations.png" style="width: 750px;"/>
+
+
+<iframe width="600" height="400" src="../files/map_finse.html" frameborder="0" allowfullscreen></iframe>
+
+
+> ## Save your interactive map
+>  You can save your map for instance as an HTML file:
+> ~~~
+> map.save('map_finse.html')
+> ~~~
+> {: .python}
+> Open the resulting file in your browser and check you have exactly the same map as in your jupyter notebook
+{: .callout}
 
 ## Overlay Data from other Weather Stations available from the Norwegian Meteorological institute
+
+### Requirements
+
+- requests
 
 The data we are willing to add are freely available from [https://data.met.no](https://data.met.no) but to get access you need to get a `client identifier`.
 
@@ -516,6 +536,8 @@ for item in r.json()['data']:
 ~~~
 {: .python}
 
+<iframe width="600" height="400" src="../files/map_metno.html" frameborder="0" allowfullscreen></iframe>
+
 > ## Customize your icons
 > If you wish to customize your icons, have a look at this [example](http://nbviewer.jupyter.org/github/python-visualization/folium/blob/master/examples/CustomIcon.ipynb).
 {: .callout}
@@ -525,10 +547,12 @@ for item in r.json()['data']:
 ## Requirements
 
 - beakerx
+- pandas
+- datetime
 
-> ## Install beakerx using Anaconda navigator
+> ## Install beakerx, pandas and datetime using Anaconda navigator
 >
-> Use your green sticky note to signal you successfully installed `beakerx` python package or
+> Use your green sticky note to signal you successfully installed `beakerx`, `pandas` and `datetime` python packages or
 > your red sticky note if you need help.
 >
 {: .challenge}
@@ -558,6 +582,86 @@ json_normalize(data)
 >
 {: .challenge}
 
+
+> ## Embedding Widgets in HTML Web Pages
+>  The notebook interface provides a context menu for generating an HTML snippet that can be embedded into any static web page:
+> <iframe width="600" height="400" src="http://minrk-ipywidgets.readthedocs.io/en/latest/_images/embed.gif" frameborder="0" allowfullscreen></iframe>
+> *Source: [ipywidgets and jupyter-js-widgets documentation](http://minrk-ipywidgets.readthedocs.io/en/latest/embedding.html#embedding-widgets-in-html-web-pages)*
+{: .callout}
+
 # Create interactive timeseries (2D-plot)
 
+Laura now wish to plot timeseries for different variables (such as temperature, wind speed) for a given Weather Station.
+
+Let's for instance retrieve `air_temperature` from `FINSEVATN` ('SN25830') from the 1st of April 2017 to the 1st of April 2018:
+
+~~~
+# example of possible variables to retrieved:
+# 'air_temperature', 'surface_air_pressure', 'relative_humidity', 'wind_speed'
+
+variable = 'air_temperature'
+
+referencetime = '2017-04-01/2018-01-01'
+
+# Finsevatn station
+source = 'SN25830'
+
+# issue an HTTP GET request
+rt = requests.get(
+        'https://frost.met.no/observations/v0.jsonld',
+        {'sources': source, 'elements': variable,'referencetime': referencetime},
+        auth=(client_id, '')
+)
+if rt.status_code == 200:
+    # Data available
+    T = json_normalize(data=rt.json()['data'], record_path='observations', meta= ['referenceTime', 'sourceId'], errors='ignore')
+else:
+    print("Data not available")
+
+T.head(10)
+~~~
+{: .python}
+
+<iframe width="600" height="400" src="../files/beakerx_T_Finsevatn.html" frameborder="0" allowfullscreen></iframe>
+
+We then split the column level and rename columns to avoid conflicts:
+
+~~~
+pd.concat([T.drop(['level'], axis=1), T['level'].apply(pd.Series).rename(columns={'unit': 'levelUnit', 'value' : 'levelValue'})], axis=1)
+~~~
+{: .python}
+
+Then for instance, we plot the 2 meters temperature (skip rows where levelValue=10):
+
+~~~
+# Select T2m
+T2m = T.loc[T['levelValue'] == 2]
+# Convert referenceTime to pandas datetime for plotting timeseries
+T2m['referenceTime'] = pd.to_datetime(T2m['referenceTime'])
+# Set column `referenceTime` as index for timeseries
+T2m.set_index(['referenceTime'])
+
+# Use BeakerX to plot:
+tsplot = TimePlot(title="2m Temperature from Finse Station SN25830",
+     xLabel="Date",
+     yLabel="2m temperature (degrees C)")
+tsplot.add(Line(x=T2m['referenceTime'], y=T2m['value'], color=Color.DARK_GRAY))
+~~~
+{: .python}
+
+<iframe width="600" height="400" src="../files/beakerx_T2m_Timeseries.html" frameborder="0" allowfullscreen></iframe>
+
+
+More information on what you can freely download from [https://data.met.no](https://data.met.no), look at the [documentation online](https://data.met.no/elementtable).
+
 # Arrange your plots in your jupyter dashboard
+
+> ## Choose what to display and how
+>
+> Go to the `dashboard view` and arrange your cells to get your final dashboard:
+> - You may add more widgets (`radiobuttons`, etc.)
+> - You may hide/show cells
+> - You may add text cells (HTML or markdown)
+>
+> If you need any help, use your red sticky note and once you are satisfied, put your green sticky note.
+{: .challenge}
