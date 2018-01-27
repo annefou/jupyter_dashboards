@@ -516,7 +516,7 @@ for item in r.json()['data']:
 ~~~
 {: .python}
 
-> ## Default browser
+> ## Customize your icons
 > If you wish to customize your icons, have a look at this [example](http://nbviewer.jupyter.org/github/python-visualization/folium/blob/master/examples/CustomIcon.ipynb).
 {: .callout}
 
@@ -549,6 +549,8 @@ for element in data:
 json_normalize(data)
 ~~~
 {: .python}
+
+<iframe width="600" height="400" src="../files/beakerx_table.html" frameborder="0" allowfullscreen></iframe>
 
 > ## Manipulate your interactive table
 >
