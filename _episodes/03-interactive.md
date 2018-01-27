@@ -585,7 +585,7 @@ json_normalize(data)
 
 > ## Embedding Widgets in HTML Web Pages
 >  The notebook interface provides a context menu for generating an HTML snippet that can be embedded into any static web page:
-> <iframe width="600" height="400" src="http://minrk-ipywidgets.readthedocs.io/en/latest/_images/embed.gif" frameborder="0" allowfullscreen></iframe>
+>  <img src="../images/embed_widgets.png" style="width: 800px;"/>
 > *Source: [ipywidgets and jupyter-js-widgets documentation](http://minrk-ipywidgets.readthedocs.io/en/latest/embedding.html#embedding-widgets-in-html-web-pages)*
 {: .callout}
 
