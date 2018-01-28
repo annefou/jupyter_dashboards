@@ -52,7 +52,7 @@ from IPython.display import HTML
 
 HTML('<iframe width="560"  height="315" src="http://www.finse.uio.no/news/webcam/dagens.jpg"></iframe>')
 ~~~
-{: .python}
+{: .language-python}
 
 <figure>
  <a href="http://www.finse.uio.no/news/webcam/dagens.jpg">
@@ -80,7 +80,7 @@ We apply the very same recipe to display the livestream camera from Finse Railwa
 from IPython.display import HTML
 HTML('<iframe width="560"  height="315" src="http://www.bt.no/tv/embed/?id=100521" allowfullscreen="true"></iframe>')
 ~~~
-{: .python}
+{: .language-python}
 
 Here we display the entire webpage [http://www.bt.no/tv/embed/?id=100521](http://www.bt.no/tv/embed/?id=100521).
 
@@ -100,7 +100,7 @@ Then in your jupyter notebook:
 ~~~
 import ipywidgets as widgets
 ~~~
-{: .python}
+{: .language-python}
 
 > ## Use your sticky note
 >  Use a **green sticky note** to signal that you have successfully installed this package
@@ -120,7 +120,7 @@ select = widgets.Select(
 
 display(select)
 ~~~
-{: .python}
+{: .language-python}
 
 ~~~
 radio = widgets.RadioButtons(
@@ -132,7 +132,7 @@ radio = widgets.RadioButtons(
 
 display(radio)
 ~~~
-{: .python}
+{: .language-python}
 
 > ## How to display several widgets in the same cell
 >  We used `display` to show our widget. You can pass more than one widget to display all of them in the same cell:
@@ -154,7 +154,7 @@ display(radio)
 >
 > display(select, radio)
 > ~~~
-> {: .python}
+> {: .language-python}
 {: .callout}
 
 Many more types of "[Selection widgets](http://ipywidgets.readthedocs.io/en/stable/examples/Widget%20List.html#Select)" can be used. Have a look at the [documentation](http://ipywidgets.readthedocs.io/en/stable/examples/Widget%20List.html#Select) to get more information.
@@ -171,7 +171,7 @@ webcam = widgets.HTML(
 
 display(webcam)
 ~~~
-{: .python}
+{: .language-python}
 
 In `value`, you need to pass HTML code, same as we did before.
 
@@ -210,7 +210,7 @@ button.observe(handle_button_change, names='value')
 
 display(webcam, button)
 ~~~
-{: .python}
+{: .language-python}
 
 The name of the callback `handle_button_change` is arbitrary and can be changed but the same name needs to be passed to `observe` method of `button` widget.
 
@@ -234,7 +234,7 @@ Let's do it by display HTML:
 from IPython.display import HTML
 HTML('<h1>Finse Data monitoring Dashboard</h1>')
 ~~~
-{: .python}
+{: .language-python}
 
 Now go to the `dashboard View` and click on `dashboard Authoring View` as shown on the figure below:
 
@@ -375,7 +375,7 @@ The locations as well as other metadata (sensor name, sensor identifier, descrip
   ]
 }
 ~~~
-{: .bash}
+{: .language-bash}
 
 How to make the same plot as we have at the beginning of the lesson?
 
@@ -388,7 +388,7 @@ import folium
 
 map = folium.Map(location=[60.5, 7.5])
 ~~~
-{: .python}
+{: .language-python}
 
 The first argument of the location is the latitude (in degrees and between -90 to 90) and the second argument is the longitude (in degrees and between -180 and 180). We centered our map around the Finse area.
 
@@ -397,7 +397,7 @@ To display the map in your jupyter notebook:
 ~~~
 map
 ~~~
-{: .python}
+{: .language-python}
 
 Now we need to add our GEOjson file `https://embed.github.com/view/geojson/annefou/jupyter_dashboards/gh-pages/data/Hardangervidda.geojson`.
 
@@ -417,7 +417,7 @@ geojson = folium.GeoJson(
 
 map
 ~~~
-{: .python}
+{: .language-python}
 
 We added all the station locations on our interactive map and now we need to add labels (using available metadata):
 
@@ -446,7 +446,7 @@ for i in range(0,len(features)):
 
 map
 ~~~
-{: .python}
+{: .language-python}
 
 
 
@@ -459,7 +459,7 @@ map
 > ~~~
 > map.save('map_finse.html')
 > ~~~
-> {: .python}
+> {: .language-python}
 > Open the resulting file in your browser and check you have exactly the same map as in your jupyter notebook
 {: .callout}
 
@@ -483,7 +483,7 @@ In all the example below, you need to set the variable `client_id` to the value 
 ~~~
 client_id = '11111111-1111-1111-1111-111111111111'
 ~~~
-{: .python}
+{: .language-python}
 
 Make sure you replace with a valid `client_id`. For more information on how to create requests see the documentation [here](https://frost.met.no/concepts#getting_started).
 
@@ -534,7 +534,7 @@ for item in r.json()['data']:
         popup = folium.Popup(iframe, max_width=2650)
         folium.Marker(location, popup=popup,  icon=folium.Icon(color='blue',  icon='cloud')).add_to(map)
 ~~~
-{: .python}
+{: .language-python}
 
 <iframe width="600" height="400" src="../files/map_metno.html" frameborder="0" allowfullscreen></iframe>
 
@@ -572,7 +572,7 @@ for element in data:
         element['validFrom'] = datetime.strptime(value, "%Y-%M-%d")
 json_normalize(data)
 ~~~
-{: .python}
+{: .language-python}
 
 <iframe width="600" height="400" src="../files/beakerx_table.html" frameborder="0" allowfullscreen></iframe>
 
@@ -620,7 +620,7 @@ else:
 
 T.head(10)
 ~~~
-{: .python}
+{: .language-python}
 
 <iframe width="600" height="400" src="../files/beakerx_T_Finsevatn.html" frameborder="0" allowfullscreen></iframe>
 
@@ -629,7 +629,7 @@ We then split the column level and rename columns to avoid conflicts:
 ~~~
 pd.concat([T.drop(['level'], axis=1), T['level'].apply(pd.Series).rename(columns={'unit': 'levelUnit', 'value' : 'levelValue'})], axis=1)
 ~~~
-{: .python}
+{: .language-python}
 
 Then for instance, we plot the 2 meters temperature (skip rows where levelValue=10):
 
@@ -647,7 +647,7 @@ tsplot = TimePlot(title="2m Temperature from Finse Station SN25830",
      yLabel="2m temperature (degrees C)")
 tsplot.add(Line(x=T2m['referenceTime'], y=T2m['value'], color=Color.DARK_GRAY))
 ~~~
-{: .python}
+{: .language-python}
 
 <iframe width="600" height="400" src="../files/beakerx_T2m_Timeseries.html" frameborder="0" allowfullscreen></iframe>
 

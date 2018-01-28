@@ -74,7 +74,7 @@ Or open Launchpad, click Terminal or iTerm and enter the command anaconda-naviga
 ~~~
 $ anaconda-navigator
 ~~~
-{: .bash}
+{: .language-bash}
 
 #### Linux
 
@@ -83,7 +83,7 @@ After you install Anaconda on Linux, you can start Anaconda Navigator by opening
 ~~~
 $ anaconda-navigator
 ~~~
-{: .bash}
+{: .language-bash}
 
 Anaconda does not add shortcuts for Linux automatically because different Linux distributions have different systems for adding menu or desktop shortcuts. You can use your operating system to create desktop and/or main-menu shortcuts that run the command anaconda-navigator.
 
@@ -275,7 +275,7 @@ This link has some useful tips that may come in handy in your research:
 ~~~
 import this
 ~~~
-{: .python}
+{: .language-python}
 
 ### Basic commands: print, !pwd, !ls
 
@@ -292,7 +292,7 @@ print('Current Working Directory:')
 print('\nFiles in Working Directory:') #\n enters to a new line
 !ls ./
 ~~~
-{: .python}
+{: .language-python}
 
 
 ### Types - integers, floats, & strings
@@ -314,7 +314,7 @@ print('example_string type:',type(example_string))
 x_string = str(x)
 print('x_string type:',type(x_string))
 ~~~
-{: .python}
+{: .language-python}
 
 
 ### Importing packages: numpy
@@ -330,7 +330,7 @@ example_array = np.array([[1,2,3],[4,5,6]])
 print('example_array:\n',example_array)
 print('example_array type:',type(example_array))
 ~~~
-{: .python}
+{: .language-python}
 
 ### Indexing
 
@@ -347,7 +347,7 @@ Key Points:
 print(example_array[0,0])
 print(example_array[-1,-1])
 ~~~
-{: .python}
+{: .language-python}
 
 
 ### Display variables with %whos
@@ -359,7 +359,7 @@ Since the Jupyter notebook doesn't have a separate window to display the variabl
 #Display variables & imported modules
 %whos
 ~~~
-{: .python}
+{: .language-python}
 
 # Get familiar with Jupyter notebooks
 
