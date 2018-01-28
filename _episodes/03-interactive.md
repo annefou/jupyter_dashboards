@@ -651,6 +651,26 @@ tsplot.add(Line(x=T2m['referenceTime'], y=T2m['value'], color=Color.DARK_GRAY))
 
 <iframe width="600" height="400" src="../files/beakerx_T2m_Timeseries.html" frameborder="0" allowfullscreen></iframe>
 
+> ## Test it yourself
+>
+> Your 2D plot can be customized for instance:
+> - Try to change `Line` by `Points`
+> - Choose different colors (to get the list of available colors, type `Color.` then TAB in a new cell)
+> - Show axes as you move your cursor (add crosshair = Crosshair(color=Color.gray, width= 2, style= StrokeType.DOT) as another argument to `TimePlot`)
+> - Add `displayName="T2m"` to `Points` (or `Line`) and check how you can group and ungroup data
+>
+> > ## solution
+> >
+> > ~~~
+> > tsplot = TimePlot(title="2m Temperature from Finse Station SN25830",
+> >      xLabel="Date",
+> >     yLabel="2m temperature (degrees Celcius)" ,
+> >      crosshair = Crosshair(color=Color.gray, width= 2, style= StrokeType.DOT))
+> > tsplot.add(Points(x=T2m['referenceTime'], y=T2m['value'], color=Color.green, displayName="T2m") )
+> > ~~~
+> > {: .language-python}
+> {: .solution}
+{: .challenge}
 
 More information on what you can freely download from [https://data.met.no](https://data.met.no), look at the [documentation online](https://data.met.no/elementtable).
 
