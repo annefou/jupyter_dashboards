@@ -1,7 +1,5 @@
 ---
 title: "Jupyter dashboards"
-teaching: 0
-exercises: 0
 questions:
 - "What is a jupyter notebook?"
 - "What is a jupyter dashboard?"

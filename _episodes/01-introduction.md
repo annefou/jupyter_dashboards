@@ -1,7 +1,5 @@
 ---
 title: "Introduction"
-teaching: 0
-exercises: 0
 questions:
 - "What is reproducible research?"
 - "How to make your research more reproducible?"

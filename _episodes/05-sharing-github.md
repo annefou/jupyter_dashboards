@@ -1,7 +1,5 @@
 ---
 title: "Sharing Jupyter Notebooks using GitHub"
-teaching: 0
-exercises: 0
 questions:
 - "How can I share my work outside of publishing in a traditional journal?"
 - "How can I use GitHub for sharing Jupyter notebooks online?"
@@ -56,7 +54,7 @@ We should see the the web page below.
     - an email address
     - a password
 
-- Click the gree _Sign up for GitHub_ button.
+- Click the green _Sign up for GitHub_ button.
 
 
 An example is shown in the screenshot below.
@@ -81,7 +79,7 @@ Click _Submit_ to complete our `Github` account setup.
 
 ![github-welcome-step-3.png](../images/github-welcome-step-3.png)
 
-### 3. Create a new reprository
+### 3. Create a new repository
 
 - Click on _Start a project_ as shown below.
 
@@ -118,11 +116,11 @@ Before we upload one of our existing files, we will first create a new notebook 
 
 > ## 4.1 Create a new sample notebook
 > - At the Jupyter dashboard, click on _New_ button and select a `Python 3` notebook.
-> - In the first cell of the notebok, type the `Python` atatement:
+> - In the first cell of the notebook, type the `Python` statement:
 >
 >        print('hello world')
 >
-> - Run the cell to confim that the `Python` statemnt does not have any bugs.
+> - Run the cell to confirm that the `Python` statement does not have any bugs.
 > - Save the notebook as "hello_world_binder.ipynb"
 {: .challenge}
 
@@ -136,8 +134,8 @@ To add our new sample notebook to our GitHub repository, we will return to our r
 >    - We will see any files that we have uploaded at the bottom of the drag and drop area.
 > - Add a message describing the change we are about to make.
 >    - Type "Adds sample notebook" in the subject field.
->    - We can either add the same message below in the extended dwscription or leave it blank.
-> - Click on _Commit changes_ button to complete the uplaod.
+>    - We can either add the same message below in the extended description or leave it blank.
+> - Click on _Commit changes_ button to complete the upload.
 {: .challenge}
 
 After commiting the change we should see that there are now two files in the repository: 1) the README and 2) the new sample notebook (as seen in the screenshot below).
@@ -159,15 +157,15 @@ In anticipation of our next lesson on sharing using the capability of [Binder](h
 >    - We will see any files that _we_ have uploaded at the bottom of the drag and drop area.
 > - Add a message describing the change we are about to make.
 >    - Typing "Added data analysis notebook" in the subject field.
->    - We can either add the same message below in the extended dwscription or leave it blank.
-> - Click on _Commit changes_ button to complete the uplaod.
+>    - We can either add the same message below in the extended description or leave it blank.
+> - Click on _Commit changes_ button to complete the upload.
 >
 {: .challenge}
 
 After commiting the change we should see that there are now three files in the repository: 1) the README and 2) the sample notebook and 3) our new data analysis notebook.
 
 > ## Where to find more about GitHub
-> To learn more about GitHub you can review one or more of these additional (external) resouces:
+> To learn more about GitHub you can review one or more of these additional (external) resources:
 > - GitHub Guide - [Hello World](https://guides.github.com/activities/hello-world/)
 > - All the [GitHub guides](https://guides.github.com)
 > - Hubspot [`git` and GitHub tutorial](https://product.hubspot.com/blog/git-and-github-tutorial-for-beginners)
@@ -178,5 +176,5 @@ After commiting the change we should see that there are now three files in the r
 > ## More about Git version control
 > If you would like to learn about source code version control using the `git` software, the `git` in GitHub, please see these resources:
 > - Try this 15 minute interactive  [`git` tutorial](https://try.github.io/)
-> - Try some additioanl `git` excersizes [here](https://gitexercises.fracz.com)
+> - Try some additional `git` exercises [here](https://gitexercises.fracz.com)
 {: .discussion}
