@@ -1,7 +1,5 @@
 ---
 title: "Introduction"
-teaching: 0
-exercises: 0
 questions:
 - "What is reproducible research?"
 - "How to make your research more reproducible?"
@@ -45,11 +43,11 @@ To make your research reproducible you need:
 Being able to reproduce results is becoming increasingly important to:
 
 - confirm that results are indeed correct
-- allow scientists (including students and PhDs working in your team) to build off of previous work to create new scientific breakthroughs faster
+- allow scientists (including students and PhDs working in your team) to develop from previous work to create new scientific breakthroughs faster
 - use the same scientific workflow with the same or different datasets and confirm/contradict existing results.  
 
 
-## What kind of problems can you face if your reseach is not reproducible?
+## What kind of problems can you face if your research is not reproducible?
 
 #### Science retracts paper without agreement of lead author.
 

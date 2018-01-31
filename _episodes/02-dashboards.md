@@ -1,7 +1,5 @@
 ---
 title: "Jupyter dashboards"
-teaching: 0
-exercises: 0
 questions:
 - "What is a jupyter notebook?"
 - "What is a jupyter dashboard?"
@@ -36,7 +34,7 @@ Jupyter is comprised of several components, some of which the user doesn't direc
 Jupyter also has some **back-end** processes, including the:
 
 3. **Kernel:** A separate process responsible for running user code. For the purposes of this workshop, we will be working on Python kernels, although Jupyter is capable of interfacing with other programming languages as well.
-4. **Notebook Server:** ? Communicates with kernel and routes the Python programming language to the web browser.
+4. **Notebook Server:** Communicates with kernel and routes the Python programming language to the web browser.
 
 <img src="../images/notebook_components.png" style="width: 500px;"/>
 
@@ -215,7 +213,7 @@ Markdown cells are mainly used to neatly document the code that is written in Ju
 
 ### NBConvert - Notebook Conversion
 
-The NBConvert tool allows you to convert a Jupyter .ipynb noteook document file into another format. The nbconvert documentation contains a complete description of this tool's capabilities:
+The NBConvert tool allows you to convert a Jupyter .ipynb notebook document file into another format. The nbconvert documentation contains a complete description of this tool's capabilities:
 [https://media.readthedocs.org/pdf/nbconvert/latest/nbconvert.pdf](https://media.readthedocs.org/pdf/nbconvert/latest/nbconvert.pdf). The description below, copied from the document, gives a brief overview of the tool:
 
 Using nbconvert enables:
@@ -228,7 +226,7 @@ Overall, notebook conversion and the nbconvert tool give scientists and research
 in a timely way across different formats.
 
 Primarily, the nbconvert tool allows you to convert a Jupyter .ipynb notebook document file into another static
-format including HTML, LaTeX, PDF, Markdown, reStructuredText, and more. nbconvert can also add productivity
+format including HTML, LaTeX, PDF, Markdown, reStructuredText, and more. The nbconvert tool can also add productivity
 to your workflow when used to execute notebooks programmatically.
 
 If used as a Python library (import nbconvert), nbconvert adds notebook conversion within a project. For

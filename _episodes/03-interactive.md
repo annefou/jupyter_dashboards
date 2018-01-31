@@ -1,7 +1,5 @@
 ---
 title: "Interactive research"
-teaching: 0
-exercises: 0
 questions:
 - "How to use jupyter dashboards for our research project?"
 objectives:
