@@ -1,5 +1,5 @@
 ---
-title: "Introduction"
+title: "Motivation"
 questions:
 - "What is reproducible research?"
 - "How to make your research more reproducible?"
