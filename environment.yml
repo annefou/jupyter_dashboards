@@ -4,9 +4,11 @@ channels:
   - conda-forge
   - tim_shawver
 dependencies:
+  - python>3.6
   - notebook>5.2
   - jupyter_dashboards
   - jupyter_dashboards_bundlers
   - folium
-  - ipywidgets
+  - ipywidgets=7
   - qgrid
+  - plotly
