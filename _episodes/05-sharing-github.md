@@ -1,5 +1,7 @@
 ---
 title: "Sharing Jupyter Notebooks using GitHub"
+teaching: 10		
+exercises: 20
 questions:
 - "How can I share my work outside of publishing in a traditional journal?"
 - "How can I use GitHub for sharing Jupyter notebooks online?"

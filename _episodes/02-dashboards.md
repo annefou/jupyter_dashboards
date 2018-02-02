@@ -1,5 +1,7 @@
 ---
 title: "Jupyter dashboards"
+teaching: 25		
+exercises: 25
 questions:
 - "What is a jupyter notebook?"
 - "What is a jupyter dashboard?"
@@ -46,68 +48,13 @@ There has been considerable development by both Project Jupyter and external col
 
 Make sure you installed [Anaconda python 3.6](https://www.anaconda.com/download/) and [Anaconda navigator](https://anaconda.org/anaconda/anaconda-navigator). For more information read and follow the [setup instructions](https://annefou.github.io/jupyter_dashboards/setup.html) for this lesson.
 
-Before launching Jupyter notebook and creating our first notebook we will:
-
-1. Start Anaconda navigator (Windows, Max-OSX and Linux)
-2. Create a new "conda environment" called "jupyter_dashboards"
-3. Create a new jupyter notebook and rename it "notebook_test"
-
-
-### Start Anaconda navigator
-
-#### WINDOWS
-
-After you install Anaconda on Windows, start Navigator by:
-
-Clicking the Anaconda Navigator desktop app from the start menu. Or by opening an Anaconda Prompt from the start menu and running the command anaconda-navigator.
-
-#### MacOS
-
-After you install Anaconda on macOS, start Navigator by:
-
-Clicking the Navigator menu item that was automatically added to your menu.
-
-Or open Launchpad, click Terminal or iTerm and enter the command anaconda-navigator.
-
-~~~
-$ anaconda-navigator
-~~~
-{: .language-bash}
-
-#### Linux
-
-After you install Anaconda on Linux, you can start Anaconda Navigator by opening a Terminal window and running the command "anaconda-navigator":
-
-~~~
-$ anaconda-navigator
-~~~
-{: .language-bash}
-
-Anaconda does not add shortcuts for Linux automatically because different Linux distributions have different systems for adding menu or desktop shortcuts. You can use your operating system to create desktop and/or main-menu shortcuts that run the command anaconda-navigator.
-
-<img src="../images/anaconda-navigator.png" style="width: 800px;"/>
-
-For more information on how to start Anaconda Navigator look [here](https://docs.continuum.io/anaconda/navigator/getting-started).
-
-### Create a new conda environment "jupyter_dashboards"
-
-- Click on tab "Environments" (menu on the left hand side) and then "Create"
-
-
-<img src="../images/create_conda_environment.png" style="width: 800px;"/>
-
-- Make sure you tick "python 3.6" and name your conda environment "jupyter_dashboards" as shown on the figure below:
-
-<img src="../images/jupyter_dashboards_environment.png"/>
-
-- Click on "Create". This stage may take a few minutes so be patient...
 
 ### Start jupyter notebook
 
-We want to start a new jupyter notebook using our newly created conda environment. To select "jupyter_dashboards" conda environment:
+We want to start a new jupyter notebook using our newly created conda environment. To select "jupyter_dashboards_workshop" conda environment:
 
 - Click on "Home" (left menu)
-- Select "jupyter_dashboards" in "Applications on" (see figure below)
+- Select "jupyter_dashboards_workshop" in "Applications on" (see figure below)
 - Install jupyter notebook if not available yet ("Install" button)
 - Launch jupyter notebook ("Launch" button)
 

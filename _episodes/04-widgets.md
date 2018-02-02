@@ -1,5 +1,7 @@
 ---
 title: "More on Jupyter widgets"
+teaching: 10		
+exercises: 20
 questions:
 - "How much can I customize my dashboards?"
 - "Can I define my own widgets?"

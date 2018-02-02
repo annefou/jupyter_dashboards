@@ -1,5 +1,7 @@
 ---
 title: "Sharing Jupyter Notebooks using Binder"
+teaching: 60		
+exercises: 60
 questions:
 - "How can we share Jupyter Notebook so they are interactive, can be run, and modified?"
 - What does it mean for code to "depend" on software?"

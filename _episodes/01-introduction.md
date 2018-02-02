@@ -1,5 +1,7 @@
 ---
 title: "Motivation"
+teaching: 15		
+exercises: 5
 questions:
 - "What is reproducible research?"
 - "How to make your research more reproducible?"
