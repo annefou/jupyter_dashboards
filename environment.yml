@@ -1,7 +1,7 @@
 name: jupyter_dashboards_workshop
 channels:
-  - defaults
   - conda-forge
+  - defaults
   - tim_shawver
 dependencies:
   - python>3.6
