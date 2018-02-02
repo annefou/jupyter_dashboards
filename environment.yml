@@ -1,8 +1,10 @@
+name: jupyter_dashboards_workshop
 channels:
   - defaults
   - conda-forge
   - tim_shawver
 dependencies:
+  - anaconda
   - jupyter_dashboards
   - jupyter_dashboards_bundlers
   - folium
