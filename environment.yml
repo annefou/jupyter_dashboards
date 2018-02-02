@@ -1,9 +1,10 @@
 channels:
-  - conda-forge
   - defaults
+  - conda-forge
+  - tim_shawver
 dependencies:
   - jupyter_dashboards
   - jupyter_dashboards_bundlers
   - folium
   - ipywidgets
-  - beakerx
+  - qgrid
