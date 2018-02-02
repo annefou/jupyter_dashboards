@@ -4,7 +4,7 @@ channels:
   - conda-forge
   - tim_shawver
 dependencies:
-  - anaconda
+  - notebook>5.2
   - jupyter_dashboards
   - jupyter_dashboards_bundlers
   - folium
