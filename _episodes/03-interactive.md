@@ -91,11 +91,7 @@ Laura does not want to display both webcam images at the same time and would lik
 - Finse Research Centre webcams
 - Finse Railway Station livestream
 
-Let's use python interactive widgets.  To make use of Selection widgets, we need to install `ipywidgets` python package.
-
-Follow the instructor and install `ipywidgets` in `jupyter_dashboards` environment through **Anaconda Navigator**.
-
-Then in your jupyter notebook:
+Let's use python interactive widgets.  To make use of Selection widgets, we need to import `ipywidgets` python package in our notebook.
 
 ~~~
 import ipywidgets as widgets
@@ -255,38 +251,15 @@ Use your **green** sticky note when ready or **red** sticky note if you have any
 
 ## Requirements
 
-We need to install the following python packages:
+We need to use the following python packages:
 - folium
 
-
-> ## Install folium using Anaconda navigator
->
-> - Remember how we installed jupyter_dashboards and jupyter_dashboards_bundlers python packages in our environment jupyter_dashboards and
-> follow the same instructions to install folium
-> Use a **green sticky note** to signal that you have successfully installed this package
-> or the **red sticky note** if you encountered any problems.
->
-> - Test your newly installed package
->
-> > ## Solution
-> > Open Anaconda Navigator, click on "Environments"
-> > Make sure you select the right working environmment "jupyter_dashboards"
-> > Select "Not installed" and search for folium and install it
-> >
-> > To check the installation go to an open jupyter notebook (jupyter_dashboards environment) or create a new one:
-> > Type
-> > `import folium`
-> >
-> > if your installation was successful, the previous command should return with no errors.
-> {: .solution}
-{: .challenge}
+~~~
+import folium
+~~~
+{: .language-python}
 
 ## Display Finse Research Centre stations
-
-
-### Requirements
-
-- urllib
 
 The locations as well as other metadata (sensor name, sensor identifier, description, etc.) of all Finse Research Centre stations are stored in [https://raw.githubusercontent.com/annefou/jupyter_dashboards/gh-pages/data/Hardangervidda.geojson](https://raw.githubusercontent.com/annefou/jupyter_dashboards/gh-pages/data/Hardangervidda.geojson) in [geojson format](http://geojson.org/). A full description of GEOJSON is out of scope now but let's have a look at the content of our file:
 
@@ -401,7 +374,8 @@ map
 
 Now we need to add our GEOjson file `https://embed.github.com/view/geojson/annefou/jupyter_dashboards/gh-pages/data/Hardangervidda.geojson`.
 
-You can pass a GEOJSON file to `folium`:
+You can pass a GEOJSON file to `folium` but we first need to download it locally from <a href="https://raw.githubusercontent.com/annefou/jupyter_dashboards/gh-pages/data/Hardangervidda.geojson">here</a>:
+
 
 ~~~
 import urllib.request
@@ -410,6 +384,15 @@ url='https://raw.githubusercontent.com/annefou/jupyter_dashboards/gh-pages/data/
 # Download the file from `url`, save it in a temporary directory and get the
 # path to it (e.g. '/tmp/tmpb48zma.txt') in the `file_name` variable:
 geojson_filename, headers = urllib.request.urlretrieve(url)
+print(geojson_filename)
+~~~
+{: .language-python}
+
+We used `urllib` python package and store `Hardangervidda.geojson` to a temporary file; the filename of this temporary file is saved in a variable we called `geojson_filename`.
+
+We are now ready to read our GEOJSON file with folium and plot it:
+
+~~~
 geojson = folium.GeoJson(
     geojson_filename,
     name='geojson'
@@ -465,10 +448,6 @@ map
 
 ## Overlay Data from other Weather Stations available from the Norwegian Meteorological institute
 
-### Requirements
-
-- requests
-
 The data we are willing to add are freely available from [https://data.met.no](https://data.met.no) but to get access you need to get a `client identifier`.
 
 > ## Get your client identifier from [https://data.met.no/auth/requestCredentials.html](https://data.met.no/auth/requestCredentials.html)
@@ -487,10 +466,13 @@ client_id = '11111111-1111-1111-1111-111111111111'
 
 Make sure you replace with a valid `client_id`. For more information on how to create requests see the documentation [here](https://frost.met.no/concepts#getting_started).
 
+Let's download data from all stations located iwthin a polygon (longitude latitude, ...):
+
 ~~~
 import folium
 import requests
 
+# Update it to your own client_id
 client_id = '11111111-1111-1111-1111-111111111111'
 
 types='SensorSystem'
@@ -504,8 +486,17 @@ r = requests.get(
         'geometry': polygon},
         auth=(client_id, '')
     )
+~~~
+{: .language-python}
 
+Let's print our data to get an overview of what we have:
 
+~~~
+print(r.json()['data'])
+~~~
+{: .language-python}
+
+~~~
 map = folium.Map(location=[60.5, 7.5], tiles='Stamen Terrain')
 
 for item in r.json()['data']:
@@ -544,21 +535,6 @@ for item in r.json()['data']:
 
 # Create an interactive table (beakerx)
 
-## Requirements
-
-- beakerx
-- pandas
-- datetime
-
-> ## Install beakerx, pandas and datetime using Anaconda navigator
->
-> Use your green sticky note to signal you successfully installed `beakerx`, `pandas` and `datetime` python packages or
-> your red sticky note if you need help.
->
-{: .challenge}
-
-## Make your interactive table
-
 Let's use the same json object we read from the Norwegian Meteorological Institute. For  further manipulation,
 we first convert the field "validFrom" from a string to a date (using `datetime`)
 ~~~
@@ -584,14 +560,15 @@ json_normalize(data)
 
 
 > ## Embedding Widgets in HTML Web Pages
->  The notebook interface provides a context menu for generating an HTML snippet that can be embedded into any static web page:
+>  The notebook interface provides a context menu for generating an HTML snippet that can be embedded into any static web page (Click on "Embed Widgets"):
 >  <img src="../images/embed_widgets.png" style="width: 800px;"/>
+>
 > *Source: [ipywidgets and jupyter-js-widgets documentation](http://minrk-ipywidgets.readthedocs.io/en/latest/embedding.html#embedding-widgets-in-html-web-pages)*
 {: .callout}
 
 # Create interactive timeseries (2D-plot)
 
-Laura now wish to plot timeseries for different variables (such as temperature, wind speed) for a given Weather Station.
+Laura wish to plot timeseries for different variables (such as temperature, wind speed) for a given Weather Station.
 
 Let's for instance retrieve `air_temperature` from `FINSEVATN` ('SN25830') from the 1st of April 2017 to the 1st of April 2018:
 
@@ -631,7 +608,7 @@ pd.concat([T.drop(['level'], axis=1), T['level'].apply(pd.Series).rename(columns
 ~~~
 {: .language-python}
 
-Then for instance, we plot the 2 meters temperature (skip rows where levelValue=10):
+Then for instance, we plot the 2 meters temperature (skip rows where `levelValue` is not 2):
 
 ~~~
 # Select T2m
@@ -641,32 +618,82 @@ T2m['referenceTime'] = pd.to_datetime(T2m['referenceTime'])
 # Set column `referenceTime` as index for timeseries
 T2m.set_index(['referenceTime'])
 
-# Use BeakerX to plot:
-tsplot = TimePlot(title="2m Temperature from Finse Station SN25830",
-     xLabel="Date",
-     yLabel="2m temperature (degrees C)")
-tsplot.add(Line(x=T2m['referenceTime'], y=T2m['value'], color=Color.DARK_GRAY))
+# Use plotly to plot:
+# Plot using plotly. Make sure you import Plotly.offline and not Plotly.plotly (online version)
+import plotly.offline as py
+import plotly.graph_objs as go
+
+# Initialize plotly in notebook mode
+py.init_notebook_mode()
+tsplot = [go.Scatter(x=T2m['referenceTime'], y=T2m['value'])]
+py.iplot(tsplot)
+
 ~~~
 {: .language-python}
 
-<iframe width="600" height="400" src="../files/beakerx_T2m_Timeseries.html" frameborder="0" allowfullscreen></iframe>
+To add a legend, title to your plot:
+
+~~~
+# To add a title, etc.
+layout = go.Layout(
+    title='2m Temperature from Finse Station SN25830',
+    xaxis=dict(
+        title='Date',
+        titlefont=dict(
+            size=18,
+            color='#7f7f7f'
+        )
+    ),
+    yaxis=dict(
+        title='2m temperature (degrees Celcius)',
+        titlefont=dict(
+            size=18,
+            color='#7f7f7f'
+        )
+    )
+)
+fig = go.Figure(data=tsplot, layout=layout)
+py.iplot(fig)
+~~~
+{: .language-python}
+
+<iframe width="600" height="400" src="https://plot.ly/~annefou/8/" frameborder="0" allowfullscreen></iframe>
 
 > ## Test it yourself
 >
 > Your 2D plot can be customized for instance:
-> - Try to change `Line` by `Points`
-> - Choose different colors (to get the list of available colors, type `Color.` then TAB in a new cell)
-> - Show axes as you move your cursor (add crosshair = Crosshair(color=Color.gray, width= 2, style= StrokeType.DOT) as another argument to `TimePlot`)
-> - Add `displayName="T2m"` to `Points` (or `Line`) and check how you can group and ungroup data
+> - Try to change the type of markers and/or line (mode='lines', mode='markers' or mode='lines+markers')
+> - Choose different colors (color name, hsl colors or RGB) by passing a marker argument to Scatter such as marker = dict(size=10,color='red')
+> - Show axes as you move your cursor (add hovermode= "closest" to the layout and showspikes = True and spikesides = True to xaxis or/and yaxis)
 >
 > > ## solution
 > >
 > > ~~~
-> > tsplot = TimePlot(title="2m Temperature from Finse Station SN25830",
-> >      xLabel="Date",
-> >     yLabel="2m temperature (degrees Celcius)" ,
-> >      crosshair = Crosshair(color=Color.gray, width= 2, style= StrokeType.DOT))
-> > tsplot.add(Points(x=T2m['referenceTime'], y=T2m['value'], color=Color.green, displayName="T2m") )
+> > # To add a title, etc.
+> > layout = go.Layout(
+> >     title='2m Temperature from Finse Station SN25830',
+> >     hovermode= "closest",
+> >     xaxis=dict(
+> >         title='Date',
+> >         titlefont=dict(
+> >             size=18,
+> >             color='#7f7f7f'
+> >         ),
+> >         showspikes = True,
+> >         spikesides = True,
+> >     ),
+> >     yaxis=dict(
+> >         title='2m temperature (degrees Celcius)',
+> >         titlefont=dict(
+> >             size=18,
+> >             color='#7f7f7f'
+> >         ),
+> >         showspikes = True,
+> >         spikesides = True,
+> >     )
+> > )
+> > fig = go.Figure(data=tsplot, layout=layout)
+> > py.iplot(fig)
 > > ~~~
 > > {: .language-python}
 > {: .solution}

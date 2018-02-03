@@ -5,7 +5,7 @@ exercises: 25
 questions:
 - "What is a jupyter notebook?"
 - "What is a jupyter dashboard?"
-- "How to install Jupyter dashboards on your laptop?"
+- "How to create Jupyter dashboards on your laptop?"
 objectives:
 - "Learn about jupyter notebook and its dashboard extension"
 - "Install and start a new jupyter dashboard on your laptop"
@@ -54,8 +54,7 @@ Make sure you installed [Anaconda python 3.6](https://www.anaconda.com/download/
 We want to start a new jupyter notebook using our newly created conda environment. To select "jupyter_dashboards_workshop" conda environment:
 
 - Click on "Home" (left menu)
-- Select "jupyter_dashboards_workshop" in "Applications on" (see figure below)
-- Install jupyter notebook if not available yet ("Install" button)
+- Select "jupyter_dashboards_workshop" in "Applications on"
 - Launch jupyter notebook ("Launch" button)
 
 Jupyter starts in your default browser at the address [http://localhost:8888/tree](http://localhost:8888/tree) and shows the tree (directories) from the root directory (here is root directory is to be understood from the installation location of Anaconda). It may vary from one laptop to another but you should not worry about it.
@@ -84,26 +83,9 @@ For now, the most important is to be able to start a new jupyter notebook. We wi
 
 A jupyter dashboard is very much like a jupyter notebook but thanks to the dashboards layout extension you can arrange your notebook outputs (text, plots, widgets, etc.) in a grid - or report-like layouts. The layouts are saved in your notebook document so the layouts can be shared too.
 
-Don't worry if you do not understand all the details now (for instance if you don't know what are widgets, what we mean by grid layouts). For now our goal is to install the dashboards layout extension and check it works properly on your laptop.
+Don't worry if you do not understand all the details now (for instance if you don't know what are widgets, what we mean by grid layouts). For now our goal is to check if the dashboards layout extension works properly on your laptop.
 
-- Close your newly created jupyter notebook (File --> Close and halt)
-- Go back to your "Anaconda Navigator" and select tab "Environments"
-- Select "jupyter_dashboards" environment
-- Click on "channels" and add "conda-forge" as shown on the image below
-
-
-<img src="../images/jupyter_channels.png" style="width: 700px;"/>
-
-
-- Install both packages:
-  * jupyter_dashboards
-  * jupyter_dashboards_bundlers
-
-- Go back to "Home" (left hand side menu) and select "jupyter_dashboards" environment ("Applications on")
-- Launch jupyter notebook
-- Go to workshop_dashboards folder (click on it) and open your "Untitled.ipynb" notebook
-
-It should be very similar to what we had before but you should notice the dashboard view extension:
+In your newly created jupyter notebook, you should have the dashboard view extension:
 
 <img src="../images/jupyter_dashboards.png" style="width: 800px;"/>
 
@@ -117,7 +99,7 @@ The main advantages of both Jupyter notebook/dashboard and python are:
 - Open source
 - Widely used and supported across many disciplines ([stackoverflow](https://stackoverflow.com/), blogs, examples, tutorials, etc.)
 - Can be used on most Operating System such as Windows, Mac OS X, or Linux!
-
+- Jupyter notebook/dashboard supports a <a href="https://github.com/jupyter/jupyter/wiki/Jupyter-kernels">**large number of programming languages**</a>.
 
 Jupyter Notebooks/dashboards are great because they **facilitate**:
 
@@ -200,100 +182,10 @@ one or a batch of notebook files to another format.
 > {: .solution}
 {: .challenge}
 
-## A short introduction to python and jupyter notebook
-
-In this tutorial, we will learn some useful Python commands and tips, including how to:
-
-1. Use the print statement
-2. Execute bash commands (eg. pwd, ls)
-3. Use magic commands (eg %who, %who_ls, %whos)
-4. Determine the data type of a variable and convert to a different type (integers, strings, floats)
-5. Import and execute commands from a python package
-6. Use the numpy (Numerical Python) package to manipulate arrays and explore indexing
+## Jupyter Notebook tips, tricks, and shortcuts
 
 This link has some useful tips that may come in handy in your research:
 [https://www.dataquest.io/blog/jupyter-notebook-tips-tricks-shortcuts/](https://www.dataquest.io/blog/jupyter-notebook-tips-tricks-shortcuts/)
-
-### The Zen of Python
-
-
-~~~
-import this
-~~~
-{: .language-python}
-
-### Basic commands: print, !pwd, !ls
-
-~~~
-#Basic commands: print, !pwd, !ls
-
-#Python does not automatically display results unless you use a print statement
-#You can also use a print statement as a debugging tool:
-
-#Print working directory - the ! executes bash commands from the Python platform
-print('Current Working Directory:')
-!pwd  
-
-print('\nFiles in Working Directory:') #\n enters to a new line
-!ls ./
-~~~
-{: .language-python}
-
-
-### Types - integers, floats, & strings
-
-
-~~~
-#Integers
-x = 1;
-print('x type:',type(x))
-
-#Floating Point Numbers
-x_float = float(x) #use the command float to change a number to type float
-print('x_float type:',type(x_float))
-
-#Strings
-example_string = 'This is a string'
-print('example_string type:',type(example_string))
-#To change a variable to type string use the command str(argument), for example:
-x_string = str(x)
-print('x_string type:',type(x_string))
-~~~
-{: .language-python}
-
-
-### Importing packages: numpy
-
-numpy (or Numerical Python) is a useful package for manipulating numbers
-
-
-~~~
-#Import Numpy and make an example array
-import numpy as np
-#to run a numpy command, use the syntax np.command_name
-example_array = np.array([[1,2,3],[4,5,6]])
-print('example_array:\n',example_array)
-print('example_array type:',type(example_array))
-~~~
-{: .language-python}
-
-### Indexing
-
-Key Points:
-* The index (i,j) refers to the i<sup>th</sup> row and j<sup>th</sup> column
-* Python indices start at 0, so to select to the i<sup>th</sup> column, you need to use the index (i-1)
-* Negative indices will count backwards from the end of an array
-
-
-~~~
-#extract a single value from the array:
-#indexing starts at 0, so [0,0] extracts the 1st row and 1st column
-#negative indices will count backwards from the end
-print(example_array[0,0])
-print(example_array[-1,-1])
-~~~
-{: .language-python}
-
 
 ### Display variables with %whos
 
@@ -301,7 +193,7 @@ Since the Jupyter notebook doesn't have a separate window to display the variabl
 
 
 ~~~
-#Display variables & imported modules
+# Display variables & imported modules
 %whos
 ~~~
 {: .language-python}
