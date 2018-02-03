@@ -21,18 +21,17 @@ field data from the [Finse Research Centre](http://finse.uio.no). [Finse Alpine 
 
 In addition to field data from Finse Research Centre, Laura wishes to use data from other Weather Stations available freely available from [the Norwegian Meteorological Institute](https://www.met.no/en). She would need to clearly identify in her plots the data sources (Meteorological Institute or Finse Research Stations).
 
-A large variety of data is therefore available to her and Laura would like to create the following outputs to better understand her project and show what [Finse Research Centre](http://finse.uio.no) is about:
+A large variety of data is therefore available to her and Laura would like to create the different plots to better understand her project and show what [Finse Research Centre](http://finse.uio.no) is about:
 
-
-- Stream web camera from Finse railway station and show the last image taken from the Finse Research Centre
+- Stream web camera from Finse railway station and show images taken from the Finse Research Centre
 -  Regularly create a map with temperature values (in degrees Celcius) from Weather Stations available from the Norwegian Meteorological Institute in the "Finse" region (Finse region at large)
-- Add temperature values from Finse Research Stations with a different color to clearly distinguish Norwegian Meteorological Institute data from Finse Research Stations.
--  On the same map, allow users to select the variable to plot (temperature, wind direction, wind speed, relative humidity, pressure, etc.).
-- Create a summary table for Norwegian Meteorological stations and Finse Research Centre Stations
+- Plot temperature values from Finse Research Stations with a different color to clearly distinguish Norwegian Meteorological Institute data from Finse Research Stations.
+-  Allow users to select the station (each station has a unique identifier) and variable to plot (temperature, wind direction, wind speed, relative humidity, pressure, etc.).
+- Create a summary table (for instance with mean values) for Norwegian Meteorological stations and/or Finse Research Centre Stations
 - Allow user to select a station (by clicking) and show on another plot historical data (timeserie) where the user can select the start and end date.
-- Show information on the battery of all Finse Research Stations. This will allow Laura to monitor the status of each stations (when the battery is down, she cannot receive data).
+- Show information on the battery of all Finse Research Stations because measurements are not reliable when the sensor battery is low. This will allow Laura to monitor the status of each stations (when the battery is down, she cannot receive data).
 
-# Stream web camera
+# Stream web camera / show static images
 
 Laura can get live images from [Finse railway station](http://www.bt.no/tv/embed/?id=100521) and there is also a webcam on the roof of [Finse Research Centre](http://www.finse.uio.no/news/webcam/) (updated every hour between 6am and 6pm). The main purpose of the camera is to make it possible for researchers to follow the snow melt-off in the spring.
 
@@ -50,14 +49,14 @@ Since we are viewing our jupyter notebook in a web browser, we can also render H
 ~~~
 from IPython.display import HTML
 
-HTML('<iframe width="560"  height="315" src="http://www.finse.uio.no/news/webcam/dagens.jpg"></iframe>')
+HTML('<iframe width="560"  height="315" src="http://www.finse.uio.no/news/webcam/finsebilder/2018-01-26_12-00.jpg"></iframe>')
 ~~~
 {: .language-python}
 
 <figure>
- <a href="http://www.finse.uio.no/news/webcam/dagens.jpg">
-	<img src="http://www.finse.uio.no/news/webcam/dagens.jpg"></a>
-	<figcaption><i> Most recent picture (updated every hour between 6am and 6pm) from Finse Research Centre<br>
+ <a href="http://www.finse.uio.no/news/webcam/finsebilder/2018-01-26_12-00.jpg">
+	<img src="http://www.finse.uio.no/news/webcam/finsebilder/2018-01-26_12-00.jpg"  width="50%"></a>
+	<figcaption><i>  Picture taken on 2018-01-26 at 12:00 from Finse Research Centre<br>
 	Source: http://www.finse.uio.no/news/webcam</i>
 	</figcaption>
 </figure>
@@ -161,7 +160,7 @@ Let's first see how to define an HTML widget:
 
 ~~~
 webcam = widgets.HTML(
-    value='<iframe width="560"  height="315" src="http://www.finse.uio.no/news/webcam/dagens.jpg"></iframe>',
+    value='<iframe width="560"  height="315" src="http://www.finse.uio.no/news/webcam/finsebilder/2018-01-26_12-00.jpg"></iframe>',
     description='Finse Research Centre',
 )
 
@@ -173,7 +172,7 @@ In `value`, you need to pass HTML code, same as we did before.
 
 <figure>
  <a href="http://www.finse.uio.no/news/webcam/dagens.jpg">
-	<img src="http://www.finse.uio.no/news/webcam/dagens.jpg"></a>
+	<img src="http://www.finse.uio.no/news/webcam/finsebilder/2018-01-26_12-00.jpg" width="50%"></a>
 </figure>
 
 To handle changes, widgets have a method (function) called `observe` which can be used to register a callback function.
