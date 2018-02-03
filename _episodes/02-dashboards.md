@@ -8,7 +8,7 @@ questions:
 - "How to create Jupyter dashboards on your laptop?"
 objectives:
 - "Learn about jupyter notebook and its dashboard extension"
-- "Install and start a new jupyter dashboard on your laptop"
+- "Start a new jupyter dashboard on your laptop"
 keypoints:
 - "Jupyter dashboards"
 ---
@@ -46,7 +46,7 @@ There has been considerable development by both Project Jupyter and external col
 
 ## Launch Jupyter notebook App
 
-Make sure you installed [Anaconda python 3.6](https://www.anaconda.com/download/) and [Anaconda navigator](https://anaconda.org/anaconda/anaconda-navigator). For more information read and follow the [setup instructions](https://annefou.github.io/jupyter_dashboards/setup.html) for this lesson.
+Make sure you installed [Anaconda python 3.6](https://www.anaconda.com/download/) and [Anaconda navigator](https://anaconda.org/anaconda/anaconda-navigator) along with all the additional python packages we will be using for this lesson. For more information read and follow the [setup instructions](https://annefou.github.io/jupyter_dashboards/setup.html) for this lesson.
 
 
 ### Start jupyter notebook
@@ -163,15 +163,11 @@ example, nbconvert is used to implement the “Download as” feature within the
 When used as a command line tool (invoked as jupyter nbconvert ...), users can conveniently convert just
 one or a batch of notebook files to another format.
 
-> ## Install nbconvert using Anaconda navigator
+> ## Use nbconvert to export your Jupyter dashboard/notebook
 >
-> - Remember how we installed jupyter_dashboards and jupyter_dashboards_bundlers python packages in our environment jupyter_dashboards and
-> follow the same instructions to install nbconvert
->
-> - Test your newly installed package:
->   * Create a new text cell in your notebook
->   * Download it as HTML i.e. Select File --> Download as HTML (.html)
->   * View the newly created HTML file with your browser
+> - Create a new text cell in your notebook
+> - Download it as HTML i.e. Select File --> Download as HTML (.html)
+> - View the newly created HTML file with your browser
 >
 >
 > > ## Solution
