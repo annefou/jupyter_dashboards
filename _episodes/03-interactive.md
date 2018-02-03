@@ -251,7 +251,6 @@ Use your **green** sticky note when ready or **red** sticky note if you have any
 ## Requirements
 
 We need to use the following python packages:
-- folium
 
 ~~~
 import folium
@@ -356,9 +355,8 @@ How to make the same plot as we have at the beginning of the lesson?
 To create a geographical map, simply pass your starting coordinates to Folium:
 
 ~~~
-import folium
+map = folium.Map(location=[60.6, 7.5], zoom_start=11, tiles='Stamen Terrain')
 
-map = folium.Map(location=[60.5, 7.5])
 ~~~
 {: .language-python}
 
@@ -370,6 +368,7 @@ To display the map in your jupyter notebook:
 map
 ~~~
 {: .language-python}
+
 
 Now we need to add our GEOjson file `https://embed.github.com/view/geojson/annefou/jupyter_dashboards/gh-pages/data/Hardangervidda.geojson`.
 
@@ -401,13 +400,48 @@ map
 ~~~
 {: .language-python}
 
-We added all the station locations on our interactive map and now we need to add labels (using available metadata):
 
+<iframe width="600" height="400" src="../files/simple_map_finse.html" frameborder="0" allowfullscreen></iframe>
+
+
+# Create an interactive table (beakerx)
+
+Let's use the same json object (called `geojson`) we just read from our GEOJSON file.
 ~~~
-map = folium.Map(location=[60.6, 7.5], zoom_start=11, tiles='Stamen Terrain')
+from pandas.io.json import json_normalize
+from beakerx import *
 
 features = geojson.data['features']
+json_normalize(features)
+~~~
+{: .language-python}
+
+<iframe width="700" height="280" src="../files/simple_beakerx_table.html" frameborder="0" allowfullscreen></iframe>
+
+> ## Manipulate your interactive table
+>
+> - Sort by `properties.description`
+> - Hide columns `geometry.type` and `type`
+>
+{: .challenge}
+
+
+> ## Embedding Widgets in HTML Web Pages
+>  The notebook interface provides a context menu for generating an HTML snippet that can be embedded into any static web page (Click on "Embed Widgets"):
+>  <img src="../images/embed_widgets.png" style="width: 800px;"/>
+>
+> *Source: [ipywidgets and jupyter-js-widgets documentation](http://minrk-ipywidgets.readthedocs.io/en/latest/embedding.html#embedding-widgets-in-html-web-pages)*
+{: .callout}
+
+
+# Customize your interactive maps
+
+We added all the station locations on our interactive map but it would be nice to add labels (using available information such as name of the sensor, description, etc.):
+
+~~~
+features = geojson.data['features']
 for i in range(0,len(features)):   
+    # Add information at the station location when you click on it
     location=[features[i]['geometry']['coordinates'][1],features[i]['geometry']['coordinates'][0]]
     name = features[i]['properties']['name']
     opr = features[i]['properties']['waspmote_id']
@@ -445,197 +479,75 @@ map
 > Open the resulting file in your browser and check you have exactly the same map as in your jupyter notebook
 {: .callout}
 
-## Overlay Data from other Weather Stations available from the Norwegian Meteorological institute
-
-The data we are willing to add are freely available from [https://data.met.no](https://data.met.no) but to get access you need to get a `client identifier`.
-
-> ## Get your client identifier from [https://data.met.no/auth/requestCredentials.html](https://data.met.no/auth/requestCredentials.html)
->
-> <img src="../images/metnoClientID.png" style="width: 750px;"/>
->
-> Use your green sticky note when you have your client identifier or you red sticky note if you need help.
-{: .challenge}
-
-In all the example below, you need to set the variable `client_id` to the value you received:
-
-~~~
-client_id = '11111111-1111-1111-1111-111111111111'
-~~~
-{: .language-python}
-
-Make sure you replace with a valid `client_id`. For more information on how to create requests see the documentation [here](https://frost.met.no/concepts#getting_started).
-
-Let's download data from all stations located iwthin a polygon (longitude latitude, ...):
-
-~~~
-import folium
-import requests
-
-# Update it to your own client_id
-client_id = '11111111-1111-1111-1111-111111111111'
-
-types='SensorSystem'
-
-# request all stations within a polygon (longitude latitude, ...)
-polygon = 'POLYGON((6.9 60.35,6.9 60.7,8.16 60.7, 8.16 60.35, 6.9 60.35))'
-# issue an HTTP GET request
-r = requests.get(
-        'https://frost.met.no/sources/v0.jsonld',
-        {'types': types,
-        'geometry': polygon},
-        auth=(client_id, '')
-    )
-~~~
-{: .language-python}
-
-Let's print our data to get an overview of what we have:
-
-~~~
-print(r.json()['data'])
-~~~
-{: .language-python}
-
-~~~
-map = folium.Map(location=[60.5, 7.5], tiles='Stamen Terrain')
-
-for item in r.json()['data']:
-        latitute=''
-        longitude=''
-        county=''
-        municipality=''
-        if 'geometry' in item:
-            latitude = item['geometry']['coordinates'][1]
-            longitude = item['geometry']['coordinates'][0]
-            location = [latitude,longitude]
-        if 'municipality' in item:
-            municipality = item['municipality']
-        if 'county' in item:
-            county = item['county']
-        html = """
-      <h4>ID: """ + item['id'] + """</h4>
-      <h4>Name: """ + item['name'] + """</h4>
-      <h4>Latitude: """ + str(latitude) + """</h4>
-      <h4>Longitude: """ + str(longitude) + """</h4>
-      <h4>Municipality: """ + str(municipality) + """</h4>
-      <h4>County: """ + str(county) + """</h4>
-      <h4>Country: """ + str(item['country']) + """</h4>
-    """
-        iframe = folium.IFrame(html=html, width=300, height=200)
-        popup = folium.Popup(iframe, max_width=2650)
-        folium.Marker(location, popup=popup,  icon=folium.Icon(color='blue',  icon='cloud')).add_to(map)
-~~~
-{: .language-python}
-
-<iframe width="600" height="400" src="../files/map_metno.html" frameborder="0" allowfullscreen></iframe>
 
 > ## Customize your icons
-> If you wish to customize your icons, have a look at this [example](http://nbviewer.jupyter.org/github/python-visualization/folium/blob/master/examples/CustomIcon.ipynb).
+> You can change the default icon, its color, etc.
+> ~~~
+> ?folium.Icon
+> ~~~
+> {: .language-python}
+>
+> If you wish to customize even more your icons (for instance define new icons), have a look at this [example](http://nbviewer.jupyter.org/github/python-visualization/folium/blob/master/examples/CustomIcon.ipynb).
 {: .callout}
 
-# Create an interactive table (beakerx)
-
-Let's use the same json object we read from the Norwegian Meteorological Institute. For  further manipulation,
-we first convert the field "validFrom" from a string to a date (using `datetime`)
-~~~
-from pandas.io.json import json_normalize
-from datetime import datetime
-from beakerx import *
-
-data = r.json()['data']
-for element in data:
-        value = element['validFrom']
-        element['validFrom'] = datetime.strptime(value, "%Y-%M-%d")
-json_normalize(data)
-~~~
-{: .language-python}
-
-<iframe width="600" height="400" src="../files/beakerx_table.html" frameborder="0" allowfullscreen></iframe>
-
-> ## Manipulate your interactive table
->
-> Sort by `county`, hide columns `@type` and `geometry.@type`
->
-{: .challenge}
-
-
-> ## Embedding Widgets in HTML Web Pages
->  The notebook interface provides a context menu for generating an HTML snippet that can be embedded into any static web page (Click on "Embed Widgets"):
->  <img src="../images/embed_widgets.png" style="width: 800px;"/>
->
-> *Source: [ipywidgets and jupyter-js-widgets documentation](http://minrk-ipywidgets.readthedocs.io/en/latest/embedding.html#embedding-widgets-in-html-web-pages)*
-{: .callout}
+More documentation on `folium` python package can be found <a href="http://nbviewer.jupyter.org/github/python-visualization/folium/tree/master/examples/">here</a>.
 
 # Create interactive timeseries (2D-plot)
 
 Laura wish to plot timeseries for different variables (such as temperature, wind speed) for a given Weather Station.
 
-Let's for instance retrieve `air_temperature` from `FINSEVATN` ('SN25830') from the 1st of April 2017 to the 1st of April 2018:
+Let's for instance retrieve `sonic temperature` (by convention sensor=`ds2_temp`) from `Hills` ('Sensor-5') from the 1st of December 2017 to the 1st of January 2018. We first create a request to remotely access data for download:
 
 ~~~
-# example of possible variables to retrieved:
-# 'air_temperature', 'surface_air_pressure', 'relative_humidity', 'wind_speed'
+sensor = 'ds2_temp'
 
-variable = 'air_temperature'
-
-referencetime = '2017-04-01/2018-01-01'
-
-# Finsevatn station
-source = 'SN25830'
-
-# issue an HTTP GET request
-rt = requests.get(
-        'https://frost.met.no/observations/v0.jsonld',
-        {'sources': source, 'elements': variable,'referencetime': referencetime},
-        auth=(client_id, '')
-)
-if rt.status_code == 200:
-    # Data available
-    T = json_normalize(data=rt.json()['data'], record_path='observations', meta= ['referenceTime', 'sourceId'], errors='ignore')
-else:
-    print("Data not available")
-
-T.head(10)
+# Finse station 'Hills'
+station = 'Hills'
+waspmote_id='023D67057C105474'
+waspmote_id='667767057C10548E'
+station_id = int(waspmote_id,16)
+start_date='2017-12-01T00:00:00+00:00'
+end_date='2018-01-01T00:00:00+00:00'
+params  = {
+            'limit': 100000,
+            'offset': 0,
+            'mote': station_id,
+            'xbee': None,
+            'sensor': sensor,
+            'tst__gte': start_date,
+            'tst__lte': end_date,
+            }
+params
 ~~~
 {: .language-python}
 
-<iframe width="600" height="400" src="../files/beakerx_T_Finsevatn.html" frameborder="0" allowfullscreen></iframe>
-
-We then split the column level and rename columns to avoid conflicts:
+Then we request data and plot:
 
 ~~~
-pd.concat([T.drop(['level'], axis=1), T['level'].apply(pd.Series).rename(columns={'unit': 'levelUnit', 'value' : 'levelValue'})], axis=1)
-~~~
-{: .language-python}
-
-Then for instance, we plot the 2 meters temperature (skip rows where `levelValue` is not 2):
-
-~~~
-# Select T2m
-T2m = T.loc[T['levelValue'] == 2]
-# Convert referenceTime to pandas datetime for plotting timeseries
-T2m['referenceTime'] = pd.to_datetime(T2m['referenceTime'])
-# Set column `referenceTime` as index for timeseries
-T2m.set_index(['referenceTime'])
-
-# Use plotly to plot:
-# Plot using plotly. Make sure you import Plotly.offline and not Plotly.plotly (online version)
 import plotly.offline as py
 import plotly.graph_objs as go
 
-# Initialize plotly in notebook mode
+# To initialize plotly for notebook usage
 py.init_notebook_mode()
-tsplot = [go.Scatter(x=T2m['referenceTime'], y=T2m['value'])]
-py.iplot(tsplot)
 
+r = requests.get(URL, headers=headers, params = params)
+if r.status_code == 200:
+    if r.json()['count'] > 0:
+        data = r.json()['results']
+        FinseStations = json_normalize(data)
+        # Add a new column where we convert 'epoch' (s) to a datetime
+        FinseStations['timestamp'] = pd.to_datetime(FinseStations.epoch, unit='s')
+        data_to_plot = [go.Scatter(x=FinseStations.timestamp, y=FinseStations.value)]
+        py.iplot(data_to_plot)
 ~~~
-{: .language-python}
+{: .lanuguage-python}
 
 To add a legend, title to your plot:
 
 ~~~
 # To add a title, etc.
 layout = go.Layout(
-    title='2m Temperature from Finse Station SN25830',
+    title='Sonic Temperature from Finse Station '+station,
     xaxis=dict(
         title='Date',
         titlefont=dict(
@@ -644,19 +556,19 @@ layout = go.Layout(
         )
     ),
     yaxis=dict(
-        title='2m temperature (degrees Celcius)',
+        title='Sonic temperature (degrees Celcius)',
         titlefont=dict(
             size=18,
             color='#7f7f7f'
         )
     )
 )
-fig = go.Figure(data=tsplot, layout=layout)
+fig = go.Figure(data=data_to_plot, layout=layout)
 py.iplot(fig)
 ~~~
 {: .language-python}
 
-<iframe width="600" height="400" src="https://plot.ly/~annefou/8/" frameborder="0" allowfullscreen></iframe>
+<iframe width="600" height="400" src="https://plot.ly/~annefou/10/" frameborder="0" allowfullscreen></iframe>
 
 > ## Test it yourself
 >
@@ -670,7 +582,7 @@ py.iplot(fig)
 > > ~~~
 > > # To add a title, etc.
 > > layout = go.Layout(
-> >     title='2m Temperature from Finse Station SN25830',
+> >     title='Sonic Temperature from Finse Station Hills',
 > >     hovermode= "closest",
 > >     xaxis=dict(
 > >         title='Date',
@@ -682,7 +594,7 @@ py.iplot(fig)
 > >         spikesides = True,
 > >     ),
 > >     yaxis=dict(
-> >         title='2m temperature (degrees Celcius)',
+> >         title='Sonic temperature (degrees Celcius)',
 > >         titlefont=dict(
 > >             size=18,
 > >             color='#7f7f7f'
@@ -691,7 +603,7 @@ py.iplot(fig)
 > >         spikesides = True,
 > >     )
 > > )
-> > fig = go.Figure(data=tsplot, layout=layout)
+> > fig = go.Figure(data=data_to_plot, layout=layout)
 > > py.iplot(fig)
 > > ~~~
 > > {: .language-python}
@@ -699,6 +611,7 @@ py.iplot(fig)
 {: .challenge}
 
 More information on what you can freely download from [https://data.met.no](https://data.met.no), look at the [documentation online](https://data.met.no/elementtable).
+
 
 # Arrange your plots in your jupyter dashboard
 
@@ -711,3 +624,97 @@ More information on what you can freely download from [https://data.met.no](http
 >
 > If you need any help, use your red sticky note and once you are satisfied, put your green sticky note.
 {: .challenge}
+
+> ## Overlay Data from other Weather Stations available from the Norwegian Meteorological institute
+>
+> The data we are willing to add are freely available from [https://data.met.no](https://data.met.no) but to get access you need to get a `client identifier`.
+>
+> ### Get your client identifier from [https://data.met.no/auth/requestCredentials.html](https://data.met.no/auth/requestCredentials.html)
+>
+> <img src="../images/metnoClientID.png" style="width: 750px;"/>
+>
+> Use your green sticky note when you have your client identifier or you red sticky note if you need help.
+>
+>
+> In all the example below, you need to set the variable `client_id` to the value you received:
+>
+> ~~~
+> client_id = '11111111-1111-1111-1111-111111111111'
+> ~~~
+> {: .language-python}
+>
+> Make sure you replace with a valid `client_id`. For more information on how to create requests see the documentation > [here](https://frost.met.no/concepts#getting_started).
+>
+> Let's download data from all stations located iwthin a polygon (longitude latitude, ...):
+>
+> ~~~
+> import folium
+> import requests
+>
+> # Update it to your own client_id
+> client_id = '11111111-1111-1111-1111-111111111111'
+>
+> types='SensorSystem'
+>
+> # request all stations within a polygon (longitude latitude, ...)
+> polygon = 'POLYGON((6.9 60.35,6.9 60.7,8.16 60.7, 8.16 60.35, 6.9 60.35))'
+> # issue an HTTP GET request
+> r = requests.get(
+>        'https://frost.met.no/sources/v0.jsonld',
+>        {'types': types,
+>        'geometry': polygon},
+>        auth=(client_id, '')
+>    )
+> ~~~
+> {: .language-python}
+>
+> Let's print our data to get an overview of what we have. For further manipulation, we first convert the field
+> “validFrom” from a string to a date (using datetime)
+>
+> ~~~
+> from pandas.io.json import json_normalize
+> from datetime import datetime
+> from beakerx import *
+>
+> data = r.json()['data']
+> for element in data:
+>         value = element['validFrom']
+>         element['validFrom'] = datetime.strptime(value, "%Y-%M-%d")
+> json_normalize(data)
+> ~~~
+> {: .language-python}
+>
+> ~~~
+>
+> for item in r.json()['data']:
+>        latitute=''
+>        longitude=''
+>        county=''
+>        municipality=''
+>        if 'geometry' in item:
+>            latitude = item['geometry']['coordinates'][1]
+>            longitude = item['geometry']['coordinates'][0]
+>            location = [latitude,longitude]
+>        if 'municipality' in item:
+>            municipality = item['municipality']
+>        if 'county' in item:
+>            county = item['county']
+>        html = """
+>      <h4>ID: """ + item['id'] + """</h4>
+>      <h4>Name: """ + item['name'] + """</h4>
+>
+>      <h4>Latitude: """ + str(latitude) + """</h4>
+>      <h4>Longitude: """ + str(longitude) + """</h4>
+>      <h4>Municipality: """ + str(municipality) + """</h4>
+>      <h4>County: """ + str(county) + """</h4>
+>      <h4>Country: """ + str(item['country']) + """</h4>
+>    """
+>        iframe = folium.IFrame(html=html, width=300, height=200)
+>        popup = folium.Popup(iframe, max_width=2650)
+>        folium.Marker(location, popup=popup,  icon=folium.Icon(color='blue',  icon='cloud')).add_to(map)
+> ~~~
+> {: .language-python}
+>
+> <iframe width="600" height="400" src="../files/map_finse_metno.html" frameborder="0" allowfullscreen></iframe>
+>
+{: .callout}
