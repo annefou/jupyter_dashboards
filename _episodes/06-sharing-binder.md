@@ -45,5 +45,3 @@ Example with:
 - Update your github repository to display shareable Binder link for each of your dashboards
 
 We make two exercises: one with environment.yml (adding conda packages) and one with a Dockerfile (where we add for instance input files).
-
-# Thebe?
