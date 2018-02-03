@@ -71,9 +71,11 @@ $ anaconda-navigator
 ~~~
 {: .language-bash}
 
-# Credits
+<br>
 
-This installation tutorial is taken from [Software Carpentry](http://swcarpentry.github.io/workshop-template/#setup)
+> ## Credits
+> This installation tutorial is taken from [Software Carpentry](http://swcarpentry.github.io/workshop-template/#setup)
+{: .callout}
 
 
 # Installing additional python packages
@@ -165,6 +167,12 @@ When clicking on "New" (right hand side) as shown on the Figure below:
 
 
 ### Go to the GitHub Homepage
+
+> ## Important notice
+> This setup instruction are from [https://reproducible-science-curriculum.github.io/sharing-RR-Jupyter/](https://reproducible-science-curriculum.github.io/sharing-RR-Jupyter/)
+> and is distributed under the <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution license</a>.
+> The following is a human-readable summary of (and not a substitute for) the <a href="https://creativecommons.org/licenses/by/4.0/legalcode">full legal text of the CC BY 4.0 license</a>.
+{: .callout}
 
 To use GitHub one needs to register for a (free) account. To register for a GitHub account we need to:
 
