@@ -4,6 +4,15 @@ title: Setup
 root: .
 ---
 
+# Prerequisites
+
+For this lesson you would need:
+
+- [Install python anaconda (3.6)](#installing-python) and [Anaconda Navigator ](#installing-anaconda-navigator)
+- [Install additional python packages](#installing-additional-python-packages) using the provided file <a hred="https://raw.githubusercontent.com/annefou/jupyter_dashboards/gh-pages/environment.yml">environment.yml</a>
+- [A github account](#github-account) (register <a href="https://github.com/">here</a> if necessary)
+- [Install Docker](#docker-installation) (try but don't worry if you do not manage to install it)
+
 # Installing Python
 
 [Python](http://python.org/) is a popular language for research computing, and great for general-purpose programming as well. Installing all of its research packages individually can be a bit difficult, so we recommend Anaconda, an all-in-one installer. Regardless of how you choose to install it, please make sure you install **Python version 3.6**. We will teach Python using the [Jupyter Notebook](http://jupyter.org/), a programming environment that runs in a web browser. For this to work you will need a reasonably up-to-date browser. The current versions of the Chrome, Safari and Firefox browsers are all supported (some older browsers, including Internet Explorer version 9 and below, are not).
@@ -42,11 +51,11 @@ and then press tab. The name of the file you just downloaded should appear.
 
 Press enter. You will follow the text-only prompts. When there is a colon at the bottom of the screen press the down arrow to move down through the text. Type yes and press enter to approve the license. Press enter to approve the default location for the files. Type yes and press enter to prepend Anaconda to your PATH (this makes the Anaconda distribution the default Python).
 
-# Installing [Anaconda navigator](https://anaconda.org/anaconda/anaconda-navigator)
+# Installing Anaconda Navigator
 
 One of the useful things about Anaconda Python is its tools for Python **package management** and **project environments**. The core tool for this is the command-line utility **conda**. However, there is also a GUI tool called "Anaconda Navigator".
 
-As part of this workshop, we will learn how to use Anaconda Navigator to manage our Python environment and for this setup section, you only need to check Anaconda Navigator is available on your laptop. Do not hesitate to contact us if you have any problems. We will be able to help you with the installation during the workshop so do not worry!
+As part of this workshop, we will learn how to use [Anaconda navigator](https://anaconda.org/anaconda/anaconda-navigator) to manage our Python environment and for this setup section, you only need to check Anaconda Navigator is available on your laptop. Do not hesitate to contact us if you have any problems. We will be able to help you with the installation during the workshop so do not worry!
 
 ## Test your Installation
 
@@ -151,6 +160,56 @@ When clicking on "New" (right hand side) as shown on the Figure below:
 > ## Default browser
 >  You may need to change the default browser for starting your jupyter notebook. All the examples in this lesson have been tested with [Google chrome](https://www.google.com/chrome/browser/desktop/index.html?brand=CHBD&gclid=CjwKCAiA15vTBRAHEiwA7Snfc8Ly7Kz3VH-sKSABkCHsiAhviP1ZJzyzV5wUPasjHs27d_0PcESFkhoCOskQAvD_BwE)
 {: .callout}
+
+# Github Account
+
+
+### Go to the GitHub Homepage
+
+To use GitHub one needs to register for a (free) account. To register for a GitHub account we need to:
+
+1. Open a web browser
+2. Navigate to [github.com](https://github.com)
+
+We should see the the web page below.
+
+**Note**: _If you already have a GitHub account you do __NOT__ need to create a new one. Please skip this step._
+
+![github-homepage-new-user.png](images/github-homepage-new-user.png)
+
+### To create a GitHub account
+
+- On the GitHub homepage enter:
+
+    - a username
+    - an email address
+    - a password
+
+- Click the green _Sign up for GitHub_ button.
+
+
+An example is shown in the screenshot below.
+
+![github-new-user-sign-up.png](images/github-new-user-sign-up.png)
+
+We are asked to confirm the email address that we used to sign. Please confirm the email address.
+
+**Select a plan**
+
+We have to choose a plan that we would like to use. We will use the personal (default) plan.
+
+Click on _Continue_.
+
+![github-welcome-step-2.png](images/github-welcome-step-2.png)
+
+**Completing our signup**
+
+We can select any options we would like (on none).
+
+Click _Submit_ to complete our `Github` account setup.
+
+![github-welcome-step-3.png](images/github-welcome-step-3.png)
+
 
 # Installation of Docker
 
