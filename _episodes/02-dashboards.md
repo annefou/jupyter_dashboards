@@ -6,9 +6,11 @@ questions:
 - "What is a jupyter notebook?"
 - "What is a jupyter dashboard?"
 - "How to create Jupyter dashboards on your laptop?"
+- "Why Jupyter dashboards make our research more reproducible?"
 objectives:
 - "Learn about jupyter notebook and its dashboard extension"
 - "Start a new jupyter dashboard on your laptop"
+- "Understand jupyter dashboards as a tool to make reproducible research"
 keypoints:
 - "Jupyter dashboards"
 ---

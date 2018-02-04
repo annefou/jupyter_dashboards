@@ -1,0 +1,29 @@
+Station name,Waspmote_id,Sensor
+Appelsinhytta,161398434909148276,ds2_meridional
+Appelsinhytta,161398434909148276,ds2_dir
+Appelsinhytta,161398434909148276,ds2_zonal
+Appelsinhytta,161398434909148276,ds2_speed
+Appelsinhytta,161398434909148276,ds2_temp
+Appelsinhytta,161398434909148276,bat
+Appelsinhytta,161398434909148276,ds2_gust
+Hills,7383483387351159950,rssi
+Hills,7383483387351159950,ds2_speed
+Hills,7383483387351159950,bat
+Hills,7383483387351159950,ds2_gust
+Hills,7383483387351159950,ds2_temp
+Hills,7383483387351159950,ds2_zonal
+Hills,7383483387351159950,ds2_meridional
+Hills,7383483387351159950,ds2_dir
+Middaselvi discharge,4574644594755523609,bat
+Finselvi discharge,4634607560887915575,ctd_temp
+Finselvi discharge,4634607560887915575,bat
+Finselvi discharge,4634607560887915575,ctd_depth
+Finselvi discharge,4634607560887915575,ctd_cond
+Drift lower lidar,873531321804412124,rssi
+Drift lower lidar,873531321804412124,ds2_zonal
+Drift lower lidar,873531321804412124,ds2_temp
+Drift lower lidar,873531321804412124,ds2_speed
+Drift lower lidar,873531321804412124,bat
+Drift lower lidar,873531321804412124,ds2_dir
+Drift lower lidar,873531321804412124,ds2_gust
+Drift lower lidar,873531321804412124,ds2_meridional

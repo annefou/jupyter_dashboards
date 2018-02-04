@@ -46,6 +46,10 @@ Since we are viewing our jupyter notebook in a web browser, we can also render H
 - audio
 - video
 
+
+First create a new jupyter dashboard and rename it `dashboard_finse.ipynb`.
+
+
 ~~~
 from IPython.display import HTML
 
@@ -625,96 +629,4 @@ More information on what you can freely download from [https://data.met.no](http
 > If you need any help, use your red sticky note and once you are satisfied, put your green sticky note.
 {: .challenge}
 
-> ## Overlay Data from other Weather Stations available from the Norwegian Meteorological institute
->
-> The data we are willing to add are freely available from [https://data.met.no](https://data.met.no) but to get access you need to get a `client identifier`.
->
-> ### Get your client identifier from [https://data.met.no/auth/requestCredentials.html](https://data.met.no/auth/requestCredentials.html)
->
-> <img src="../images/metnoClientID.png" style="width: 750px;"/>
->
-> Use your green sticky note when you have your client identifier or you red sticky note if you need help.
->
->
-> In all the example below, you need to set the variable `client_id` to the value you received:
->
-> ~~~
-> client_id = '11111111-1111-1111-1111-111111111111'
-> ~~~
-> {: .language-python}
->
-> Make sure you replace with a valid `client_id`. For more information on how to create requests see the documentation > [here](https://frost.met.no/concepts#getting_started).
->
-> Let's download data from all stations located iwthin a polygon (longitude latitude, ...):
->
-> ~~~
-> import folium
-> import requests
->
-> # Update it to your own client_id
-> client_id = '11111111-1111-1111-1111-111111111111'
->
-> types='SensorSystem'
->
-> # request all stations within a polygon (longitude latitude, ...)
-> polygon = 'POLYGON((6.9 60.35,6.9 60.7,8.16 60.7, 8.16 60.35, 6.9 60.35))'
-> # issue an HTTP GET request
-> r = requests.get(
->        'https://frost.met.no/sources/v0.jsonld',
->        {'types': types,
->        'geometry': polygon},
->        auth=(client_id, '')
->    )
-> ~~~
-> {: .language-python}
->
-> Let's print our data to get an overview of what we have. For further manipulation, we first convert the field
-> “validFrom” from a string to a date (using datetime)
->
-> ~~~
-> from pandas.io.json import json_normalize
-> from datetime import datetime
-> from beakerx import *
->
-> data = r.json()['data']
-> for element in data:
->         value = element['validFrom']
->         element['validFrom'] = datetime.strptime(value, "%Y-%M-%d")
-> json_normalize(data)
-> ~~~
-> {: .language-python}
->
-> ~~~
->
-> for item in r.json()['data']:
->        latitute=''
->        longitude=''
->        county=''
->        municipality=''
->        if 'geometry' in item:
->            latitude = item['geometry']['coordinates'][1]
->            longitude = item['geometry']['coordinates'][0]
->            location = [latitude,longitude]
->        if 'municipality' in item:
->            municipality = item['municipality']
->        if 'county' in item:
->            county = item['county']
->        html = """
->      <h4>ID: """ + item['id'] + """</h4>
->      <h4>Name: """ + item['name'] + """</h4>
->
->      <h4>Latitude: """ + str(latitude) + """</h4>
->      <h4>Longitude: """ + str(longitude) + """</h4>
->      <h4>Municipality: """ + str(municipality) + """</h4>
->      <h4>County: """ + str(county) + """</h4>
->      <h4>Country: """ + str(item['country']) + """</h4>
->    """
->        iframe = folium.IFrame(html=html, width=300, height=200)
->        popup = folium.Popup(iframe, max_width=2650)
->        folium.Marker(location, popup=popup,  icon=folium.Icon(color='blue',  icon='cloud')).add_to(map)
-> ~~~
-> {: .language-python}
->
-> <iframe width="600" height="400" src="../files/map_finse_metno.html" frameborder="0" allowfullscreen></iframe>
->
-{: .callout}
+Finally don't forget to save your jupyter dashboard (`dashboard_finse.ipynb`).
