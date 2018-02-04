@@ -64,6 +64,7 @@ Our GitHub homepage will now show the new repository under _Your repositories_ (
 
 ![github-new-user-with-repository.png](../images/github-new-user-with-repository.png)
 
+
 **Congratulations!!** We now have created our repository for hosting our jupyter dashboards!
 
 ### 2. Upload our previous working notebook to the repository
@@ -83,6 +84,77 @@ In anticipation of our next lesson on sharing using the capability of [Binder](h
 {: .challenge}
 
 After commiting the change we should see that there are now three files in the repository: 1) the README and 2) the LICENSE and 3) our new data analysis notebook.
+
+
+
+# Authoring & Citation
+
+In addition to LICENSE, it is recommended to add:
+
+- **AUTHORS**: file containing the list of contributors
+- **CITATION**: file containing information on how to cite your work, including a DOI (Digital Object Identifier)
+
+## List of authors
+
+A GitHub repository is very often created by an individual user so adding the list of authors is very important.
+
+> ## Add a new file AUTHORS in your repository
+>
+> - Go to your repository in your web browser
+> - Click on "Create new file" and name your file `AUTHORS`
+> - Add the list of authors/contributors and commit your changes
+>
+{: .challenge}
+
+## Make your GitHub repository citable (<a href="https://en.wikipedia.org/wiki/Digital_object_identifier#">DOI</a>)
+
+Your GitHub repository contains your scientific workflow, your programs/software, datasets (or links to your datasets) and jupyter dashboards so it is important to make the work you share on GitHub citable by archiving your GitHub repository to get a DOI. You may have a Data archive in your University or you may use the data archiving tool <a href="https://zenodo.org/">Zenodo</a>.
+
+### Login to Zenodo
+
+- Go to <a href="https://zenodo.org/">https://zenodo.org/</a> and click on `Log in` (not `Sign up`)
+- Choose `Log in with GitHub`
+
+<img src="../images/zenodo_login.png" width="30%">
+
+
+- Zenodo will redirect you back to GitHub and ask you to give Zenodo the permissions it needs. click `Authorize Application`:
+
+<img src="https://guides.github.com/activities/citable-code/zenodo-authorize.png" width="50%">
+
+**Source**: <a href="https://guides.github.com/activities/citable-code/zenodo-authorize.png">https://guides.github.com/activities/citable-code/zenodo-authorize.png</a>
+
+### Get a DOI for your Github repository
+
+- When sucessfully login to Zenodo, click on your username (top right) and select `GitHub`
+
+<img src="../images/zenodo_github.png" width="70%">
+
+Then
+- Select the repository `sharing-github` and flip the switch to `on`
+- Create a <a href="https://help.github.com/articles/creating-releases/">Release on Github</a>
+- Then go to your GitHub repository and click on `settings` and select `Webhooks`
+
+<img src="../images/webhooks_github.png" width="70%">
+
+Your GitHub repository is now linked to Zenodo and you will automatically get a DOI:
+
+
+<img src="../images/zenodo_archive_github.png" width="70%">
+
+### Add your DOI to your GitHub repository
+
+- Get your DOI badge on Zenodo and copy your DOI information (selection markdown)
+
+<img src="../images/zenodo_DOI_github.png" width="50%">
+
+- Go to your GitHub repository and edit your README file and add your DOI
+
+# Limitations
+
+Sharing your GitHub repository along with your jupyter notebooks/dashboards is an important step for making your research reproducible. However, anyone willing to rerun your programs/dashboards/notebooks need to get the same computational environment (python, additional python packages, etc.).
+
+The next section (using <a href="https://github.com/jupyterhub/binderhub">Binder</a>) will show you how to make your research fully reproducible, offering users the same computational environment with no efforts.
 
 > ## Where to find more about GitHub
 > To learn more about GitHub you can review one or more of these additional (external) resources:
