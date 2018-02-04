@@ -148,7 +148,8 @@ Your GitHub repository is now linked to Zenodo and you will automatically get a 
 
 <img src="../images/zenodo_DOI_github.png" width="50%">
 
-- Go to your GitHub repository and edit your README file and add your DOI
+- Go to your GitHub repository and edit your README file to add your DOI
+- Create a new file CITATION in your GitHub repository and show how to cite your reprository with your DOI
 
 # Limitations
 
