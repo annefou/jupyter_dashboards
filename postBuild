@@ -1,3 +1,4 @@
+#!/bin/bash
 # Installation of SNOWPACK a multi-purpose snow and land-surface model, which focuses on a detailed description of the mass and energy exchange between the snow, the atmosphere and optionally with the vegetation cover and the soil. It also includes a detailed treatment of mass and energy fluxes within these media.
 
 # Get METEOI library and install:
