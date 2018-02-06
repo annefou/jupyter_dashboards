@@ -427,19 +427,36 @@ map
 <iframe width="600" height="400" src="../files/simple_map_finse.html" frameborder="0" allowfullscreen></iframe>
 
 
-# Create an interactive table (beakerx)
+# Create an interactive table (qgrid)
+First we have to install the package qgrid in the anaconda-navigator. 
+conda install -c tim_shawver qgrid
+# the following step is required for windows users only. linux and osx users can skip it.
+jupyter nbextension enable --py --sys-prefix qgrid
+
+If you haven't enabled the ipywidgets nbextension yet, you'll need to also run this command:
+
+jupyter nbextension enable --py --sys-prefix widgetsnbextension
 
 Let's use the same json object (called `geojson`) we just read from our GEOJSON file.
 ~~~
 from pandas.io.json import json_normalize
-from beakerx import *
 
 features = geojson.data['features']
 json_normalize(features)
 ~~~
 {: .language-python}
-
-<iframe width="700" height="280" src="../files/simple_beakerx_table.html" frameborder="0" allowfullscreen></iframe>
+~~~
+import qgrid
+qgrid_widget= qgrid.show_grid(data_frame=json_normalize(features),
+                show_toolbar=True)
+qgrid_widget
+~~~
+{: .language-python}
+In order to get the changed dataframe:
+~~~
+qgrid_widget.get_changed_df()
+~~~
+{: .language-python}
 
 > ## Manipulate your interactive table
 >
@@ -447,6 +464,8 @@ json_normalize(features)
 > - Hide columns `geometry.type` and `type`
 >
 {: .challenge}
+
+
 
 
 > ## Embedding Widgets in HTML Web Pages
