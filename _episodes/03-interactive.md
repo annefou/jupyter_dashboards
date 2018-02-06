@@ -17,19 +17,38 @@ Laura has just started her PhD program as part of the [Land-Atmosphere Interacti
 field data from the [Finse Research Centre](http://finse.uio.no). [Finse Alpine Research Center](http://finse.uio.no) is located in the northwestern part of the Hardangervidda mountain plateau and is of great interest for scientists in particular biologists, geologists, geophysicists.
 
 
-<script src="https://embed.github.com/view/geojson/annefou/jupyter_dashboards/gh-pages/data/Hardangervidda.geojson"></script>
-
 In addition to field data from Finse Research Centre, Laura wishes to use data from other Weather Stations available freely available from [the Norwegian Meteorological Institute](https://www.met.no/en). She would need to clearly identify in her plots the data sources (Meteorological Institute or Finse Research Stations).
+
+<script src="https://embed.github.com/view/geojson/annefou/jupyter_dashboards/gh-pages/data/Hardangervidda.geojson"></script>
 
 A large variety of data is therefore available to her and Laura would like to create the different plots to better understand her project and show what [Finse Research Centre](http://finse.uio.no) is about:
 
 - Stream web camera from Finse railway station and show images taken from the Finse Research Centre
--  Regularly create a map with temperature values (in degrees Celcius) from Weather Stations available from the Norwegian Meteorological Institute in the "Finse" region (Finse region at large)
-- Plot temperature values from Finse Research Stations with a different color to clearly distinguish Norwegian Meteorological Institute data from Finse Research Stations.
--  Allow users to select the station (each station has a unique identifier) and variable to plot (temperature, wind direction, wind speed, relative humidity, pressure, etc.).
-- Create a summary table (for instance with mean values) for Norwegian Meteorological stations and/or Finse Research Centre Stations
-- Allow user to select a station (by clicking) and show on another plot historical data (timeserie) where the user can select the start and end date.
+- Create a map to locate Weather Stations available from the Finse Alpine Research Centre and the Norwegian Meteorological Institute in the "Finse" region (Finse region at large)
+-  Allow users to select the station (each station has a unique identifier), variable to plot (temperature, wind direction, wind speed, relative humidity, pressure, etc.) and period of time (start date and end date)
+- Create an interactive table containing information about the Weather stations
 - Show information on the battery of all Finse Research Stations because measurements are not reliable when the sensor battery is low. This will allow Laura to monitor the status of each stations (when the battery is down, she cannot receive data).
+
+To complement this work Laura would like to use a snow and land surface model to run single-point simulations (for each station location). The model she will be using is called <a href="https://models.slf.ch/p/snowpack/">SNOWPACK</a> and is a multi-purpose snow and land-surface model.
+
+<a href="https://models.slf.ch/p/snowpack/">SNOWPACK</a> has originally been developed to support avalanche warning (Lehning et al., 1999)[^fn1] and thus features a very detailed description of snow properties including weak layer characterization (Stoessel et al., 2009)[^fn2], phase changes and water transport in snow (Hirashima et al., 2010)[^fn3].
+
+In terms of computational resources, this model is not too demanding and her work will consist in:
+- Compiling and create snowpack executable: SNOWPACK is a written in C++ and the main program is call `snowpack`
+- Prepare input files necessary to run SNOWPACK for various period of time using <a href="https://models.slf.ch/p/meteoio/">METEOIO</a>, a C++ library aiming at making data access easy and safe for numerical simulations in environmental sciences requiring general meteorological data
+- Configure the model and run it for each weather locations
+
+> ## Goal
+> The main goal of this exercise is to write a blog/paper using Jupyter dashboards. Thanks to this approach Laura will
+> have all the information she needs and would like to share in one single place:
+>
+> - the paper storyline including her bibliography
+> - all the plots/visualization/video, etc.
+> - the SNOWPACK and METEOIO library (compiled and ready to use)
+> - the scientific workflows she used so that she or anyone interested in her work can easily reproduce her work (plots, simulation, etc.)
+> - be able to generate various output formats depending where and how she would like to publish her work (for instance slides for conferences, HTML, LaTeX, etc.)
+>
+{:  .callout}
 
 # Stream web camera / show static images
 
@@ -630,3 +649,11 @@ More information on what you can freely download from [https://data.met.no](http
 {: .challenge}
 
 Finally don't forget to save your jupyter dashboard (`dashboard_finse.ipynb`).
+
+# references
+
+[^fn1]: Lehning, Michael & Bartelt, Perry & Brown, Bob & Russi, Tom & Stöckli, Urs & Zimmerli, Martin. (1999). SNOWPACK model calculations for avalanche warning based upon a network of weather and snow stations. Cold Regions Science and Technology. 30. 145-157. 10.1016/S0165-232X(99)00022-1.
+
+[^fn2]: Stoessel, F., Manes, C., Guala, M., Fierz, C., Lehning, M., Micrometeorological and morphological observations of surface hoar dynamics on a mountain snow covers, 2009, Water Resour. Res., doi:10.1029/2009WR008198.
+
+[^fn3]: Hirashima, H., Yamaguchi, S., Sato, A., Lehning, M., Numerical modeling of liquid water movement through layered snow based on new measurements of the water retention curve, 2010, Cold Reg. Sci. Technol., 64/2, 94-103, doi: 10.1016/j.coldregions.2010.09.003.
