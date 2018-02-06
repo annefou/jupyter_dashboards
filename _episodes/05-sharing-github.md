@@ -41,50 +41,42 @@ Make sure you have a (free) account otherwise follow our <a href="https://annefo
 
 - Click on _Start a project_ as shown below.
 
-![github-dashboard.png](../images/github-dashboard.png)
+![github-selecting-new-repo.png](../images/github-selecting-new-repo.png)
 
 > ## Create a new repository:
 >
-> - Add a repository name. We choose to name our repository `sharing-github`.
+> - Add a repository name. We choose to name our repository `jupyter-dashboard`.
 > - Personal GitHub accounts require that projects be _public_.
 > - Check the _Initialize this repository with a README_ option.
 > - Add a **license** (for instance BSD 2-Clause "Simplified" License or BSD 3-Clause or MIT license)
 > - Click the green _Create repository_ button.
 {: .challenge}
 
-![github-new-repository-sharing-github.png](../images/github-new-repository-sharing-github.png)
-
-After creating the new repository, we will be taken to the project homepage (shown below).
-
-![github-new-repository-homepage.png](../images/github-new-repository-homepage.png)
-
-If we click on the GitHub icon at the top of the page, we will go to our GitHub homepage.
-
-Our GitHub homepage will now show the new repository under _Your repositories_ (as shown below).
-
-![github-new-user-with-repository.png](../images/github-new-user-with-repository.png)
-
+![github-new-repo-jupyter-dashboard.png](../images/github-new-repo-jupyter-dashboard.png)
 
 **Congratulations!!** We now have created our repository for hosting our jupyter dashboards!
 
 ### 2. Upload our previous working notebook to the repository
 
-In anticipation of our next lesson on sharing using the capability of [Binder](https://mybinder.org), we need to upload the notebook that we have been working on. To do this we will repeat many of the steps above.
+In anticipation of our next lesson on sharing using the capability of [Binder](https://mybinder.org), we need to upload the notebook that we have been working on. 
+
+In our new repository, we will click on the _Upload file_ button as shown below.
+![github-uploading-file.png](../images/github-uploading-file.png)
+
 
 > ## Upload our file:
-> - Return to `sharing-github` repository on GitHub
-> - Click on the _Upload file_ button
 > - Drag and drop the data analysis notebook completed in the previous lesson or click the _choose your files_ link to select the notebook.
 >    - We will see any files that _we_ have uploaded at the bottom of the drag and drop area.
 > - Add a message describing the change we are about to make.
->    - Typing "Added data analysis notebook" in the subject field.
+>    - Typing "Map and 2D plot data Finse research center" in the subject field.
 >    - We can either add the same message below in the extended description or leave it blank.
 > - Click on _Commit changes_ button to complete the upload.
 >
 {: .challenge}
 
-After commiting the change we should see that there are now three files in the repository: 1) the README and 2) the LICENSE and 3) our new data analysis notebook.
+After commiting the change we should see that there are now three files in the repository: 1) the README and 2) the LICENSE and 3) our dashboard_finse.
 
+![github-jupyter-dashboard-uploaded.png](../images/github-jupyter-dashboard-uploaded.png)
 
 
 # Authoring & Citation
