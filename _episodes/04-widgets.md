@@ -19,7 +19,13 @@ The list of available sensors varies from one station to another and this inform
 
 ~~~
 import pandas as pd
-StationsSensors=pd.read_csv("../data/FinseStationsSensors.csv")
+import urllib.request
+
+url='https://raw.githubusercontent.com/annefou/jupyter_dashboards/gh-pages/data/FinseStationsSensors.csv'
+# Download the file from `url`, save it FinseStationsSensors.csv
+geojson_filename, headers = urllib.request.urlretrieve(url, 'FinseStationsSensors.csv')
+
+StationsSensors=pd.read_csv("FinseStationsSensors.csv")
 StationsSensors
 
 # Create a dictionary where for each station we get the list of available sensors
