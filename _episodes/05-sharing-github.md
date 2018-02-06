@@ -22,6 +22,20 @@ keypoints:
 {: .callout}
 
 
+# Publishing to Github Gist
+
+- Launch Jupyter dashboard (either from `Anaconda Navigator` or from the command line).
+- Execute the entire jupyter dashboard (Kernel --> Restart & Run All) to make sure your dashboard is publishable
+- Click on `Publish...` (see image below):
+  - if you leave the Personal Access Token field empty then your dashboard is published as an anonymous gist (and can't be deleted)
+  - If you don't want to publish your dashboard as an anonymous gist, you need to use your github account:
+      - Login to your Github account
+      - Go back to your jupyter notebook and click again on `Publish...` but this time don't leave empty the field `Personal Access Token`. If you don't have a `Personal Access Token` yet, click on  `Personal Access Token` to create a new one (**Personal access tokens function like ordinary OAuth access tokens so keep it secret!**)
+      - Enter your `Personal Access Token` and `Publish`
+
+<img src="../images/publish_from_notebook.png" style="width: 850px;"/>
+
+
 # Share your jupyter dashboards online using Github
 
 In this lesson we will learn:
@@ -58,7 +72,7 @@ Make sure you have a (free) account otherwise follow our <a href="https://annefo
 
 ### 2. Upload our previous working notebook to the repository
 
-In anticipation of our next lesson on sharing using the capability of [Binder](https://mybinder.org), we need to upload the notebook that we have been working on. 
+In anticipation of our next lesson on sharing using the capability of [Binder](https://mybinder.org), we need to upload the notebook that we have been working on.
 
 In our new repository, we will click on the _Upload file_ button as shown below.
 ![github-uploading-file.png](../images/github-uploading-file.png)
