@@ -165,7 +165,7 @@ Let's first see how to define an HTML widget:
 ~~~
 webcam = widgets.HTML(
     value='<iframe width="560"  height="315" src="http://www.finse.uio.no/news/webcam/finsebilder/2018-01-26_12-00.jpg"></iframe>',
-    description='Finse Research Centre',
+    description='Finse Research Centre', style = {'description_width': 'initial'}
 )
 
 display(webcam)
