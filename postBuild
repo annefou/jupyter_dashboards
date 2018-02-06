@@ -1,17 +1,21 @@
 #!/bin/bash
 # Installation of SNOWPACK a multi-purpose snow and land-surface model, which focuses on a detailed description of the mass and energy exchange between the snow, the atmosphere and optionally with the vegetation cover and the soil. It also includes a detailed treatment of mass and energy fluxes within these media.
 
+export PREFIX="$(python -c 'import sys; print(sys.prefix)')"
+
+work="$PWD"
 # Get METEOI library and install:
 wget https://models.slf.ch/p/meteoio/downloads/get/MeteoIO-2.7.0-src.tar.gz
-
 tar zxf MeteoIO-2.7.0-src.tar.gz
 cd MeteoIO-2.7.0-src
 mkdir build
 cd build
-cmake ../ -DCMAKE_INSTALL_PREFIX=$HOME/meteoi/2.7.0
+cmake ../ -DCMAKE_INSTALL_PREFIX=$PREFIX
 make
 make install
-export LD_LIBRARY_PATH=$HOME/meteoi/2.7.0/lib:$LD_LIBRARY_PATH
+cd $work
+
+rm -rf MeteoIO*
 
 # Get SNOWPACK source code and install:
 wget https://models.slf.ch/p/snowpack/downloads/get/Snowpack-3.4.5-src.tar.gz
@@ -20,10 +24,8 @@ tar zxf Snowpack-3.4.5-src.tar.gz
 cd Snowpack-3.4.5-src
 mkdir build
 cd build
-cmake ../ -DCMAKE_INSTALL_PREFIX=$HOME/snowpack/3.4.5 -DCMAKE_METEOI_ROOT=$HOME/meteoi/2.7.0
+cmake ../ -DCMAKE_INSTALL_PREFIX=$PREFIX -DCMAKE_METEOI_ROOT=$PREFIX
 make
 make install
 
-# Add snowpack to user PATH to be able to use it
-export PATH=$HOME/snowpack/3.4.5/bin:$PATH
-
+rm -rf Snowpack*
