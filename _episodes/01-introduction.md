@@ -97,22 +97,22 @@ Being able to reproduce results is becoming increasingly important to:
 
 One way to make our research more reproducible is to share:
 
--  Well-documented and fully open codes
--  Data used to produce our results
+-  Well-documented and fully open codes.
+-  Data used to produce our results.
 -  The details of our scientific workflow allowing researchers to easily reproduce steps by steps our research results and go beyond the state of the art without re-inventing the wheel.
--  Information on how to cite my research to get valuable recognition for my work
+-  Information on how to cite my research to get valuable recognition for my work.
 
 These are rather vague statements and we need tools to help overcome the technical challenges of doing reproducible research. The most important requirements these tools need to fulfill are:
 
 - Collaborative authoring (scientific publications are rarely written by one person only)
-- Math support to write complex formula
-- Multiple output formats: one document but several output formats i.e. can produce on demand (upyter notebook, HTML, LaTeX, pdf, etc. with no effort
+- Math support to write complex formulas
+- Multiple output formats: one document but several output formats i.e. can produce on demand (jupyter notebook, HTML, LaTeX, pdf, etc. with no effort
 - Linking data (whether they are archived in <a href="https://zenodo.org/">Zenodo</a> or another Data Archive)
 - Linking to Software programs (user programs for instance stored on <a href="https://www.github.com">GitHub</a> or pre-compiled open-source, etc.)
 - Linking to people (social media such as Twitter, facebook, etc.)
 - Receive credits for my research (citation)
 - Commenting and possibility to add additional information (additional plots, video, sound, programs, explanation, etc.)
-- Interactive figures allowing other researchers to explore my data
-- Possibility to easily archive my research work
+- Interactive figures allowing other researchers to explore my data.
+- Possibility to easily archive my research work.
 
  The purpose of this lesson is to show you why <a href="http://www.github.com">GitHub</a> associated with <a href="http://jupyter-dashboards-layout.readthedocs.io/en/latest/">Jupyter dashboards</a> and <a href="https://binderhub.readthedocs.io/en/latest/">Binder</a> are tools that fulfill most of our needs.
