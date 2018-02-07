@@ -69,12 +69,12 @@ Since we are viewing our jupyter notebook in a web browser, we can also render H
 First create a new jupyter dashboard and rename it `dashboard_finse.ipynb`.
 
 
-~~~
+
+<pre data-executable="true" data-language="python">
 from IPython.display import HTML
 
 HTML('<iframe width="560"  height="315" src="http://www.finse.uio.no/news/webcam/finsebilder/2018-01-26_12-00.jpg"></iframe>')
-~~~
-{: .language-python}
+</pre>
 
 <figure>
  <a href="http://www.finse.uio.no/news/webcam/finsebilder/2018-01-26_12-00.jpg">

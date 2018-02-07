@@ -20,6 +20,15 @@
     {% elsif site.carpentry == "lc" %}
     <link rel="shortcut icon" type="image/x-icon" href="/favicon-lc.ico" />
     {% endif %}
+    <!-- thebe config for binder -->
+    <script id="thebe-config-data" type="text/x-thebe-config">
+      {
+        "binderOptions": {
+          "repo": "annefou/jupyter_dashboards",
+  	"ref": "gh-pages"
+        }
+      }
+    </script>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
