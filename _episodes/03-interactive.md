@@ -426,7 +426,6 @@ map
 
 <iframe width="600" height="400" src="../files/simple_map_finse.html" frameborder="0" allowfullscreen></iframe>
 
-
 # Create an interactive table (beakerx)
 
 Let's use the same json object (called `geojson`) we just read from our GEOJSON file.
@@ -448,6 +447,57 @@ json_normalize(features)
 >
 {: .challenge}
 
+# Create an interactive table (qgrid)
+
+`beakerx` is a powerful python package and can be used for plotting too. However, it may be an overkill for interactive table.
+
+`qgrid` is a much lighter python package and it renders pandas DataFrames within a Jupyter notebook.
+
+On Windows, you need to enable qgrid:
+
+~~~
+# the following step is required for windows users only.
+# linux and osx users can skip it.
+
+jupyter nbextension enable --py --sys-prefix qgrid
+~~~
+{: .language-bash}
+
+If you haven't enabled the ipywidgets nbextension yet, you'll need to also run this command:
+
+~~~
+jupyter nbextension enable --py --sys-prefix widgetsnbextension
+~~~
+{: .language-bash}
+
+Let's use the same json object (called `geojson`) we just read from our GEOJSON file.
+
+~~~
+from pandas.io.json import json_normalize
+
+features = geojson.data['features']
+json_normalize(features)
+~~~
+{: .language-python}
+
+To visualize our table with `qgrid`:
+
+~~~
+import qgrid
+qgrid_widget= qgrid.show_grid(data_frame=json_normalize(features),
+                show_toolbar=True)
+qgrid_widget
+~~~
+{: .language-python}
+
+In order to get the changed dataframe:
+
+~~~
+qgrid_widget.get_changed_df()
+~~~
+{: .language-python}
+
+<br>
 
 > ## Embedding Widgets in HTML Web Pages
 >  The notebook interface provides a context menu for generating an HTML snippet that can be embedded into any static web page (Click on "Embed Widgets"):
