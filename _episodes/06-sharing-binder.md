@@ -116,8 +116,7 @@ rm -rf Snowpack*
 ~~~
 {: .language-bash}
 
-~~~
-## Note
+> ## Note
 > This file must be executable to be used with repo2docker.
 > To do this, run the following on Linux/Mac-OSX:
 > ~~~
@@ -130,7 +129,6 @@ rm -rf Snowpack*
 > git update-index --chmod=+x foo.sh
 > ~~~
 > {: .language-python}
-~~~
 {: .callout}
 
 > ## Launch your computational environment on Binder
