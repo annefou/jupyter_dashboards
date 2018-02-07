@@ -73,7 +73,8 @@ First create a new jupyter dashboard and rename it `dashboard_finse.ipynb`.
 <pre data-executable="true" data-language="python">
 from IPython.display import HTML
 
-HTML('<iframe width="560"  height="315" src="http://www.finse.uio.no/news/webcam/finsebilder/2018-01-26_12-00.jpg"></iframe>')
+
+HTML('<iframe width="560"  height="315" src="http://www.finse.uio.no/news/webcam/dagens.jpg"></iframe>')
 </pre>
 
 <figure>
@@ -98,11 +99,10 @@ For more information on how to include webpage in HTML using ifram tag, look [he
 
 We apply the very same recipe to display the livestream camera from Finse Railway station:
 
-~~~
+<pre data-executable="true" data-language="python">
 from IPython.display import HTML
 HTML('<iframe width="560"  height="315" src="http://www.bt.no/tv/embed/?id=100521" allowfullscreen="true"></iframe>')
-~~~
-{: .language-python}
+</pre>
 
 Here we display the entire webpage [http://www.bt.no/tv/embed/?id=100521](http://www.bt.no/tv/embed/?id=100521).
 
@@ -115,10 +115,9 @@ Laura does not want to display both webcam images at the same time and would lik
 
 Let's use python interactive widgets.  To make use of Selection widgets, we need to import `ipywidgets` python package in our notebook.
 
-~~~
+<pre data-executable="true" data-language="python">
 import ipywidgets as widgets
-~~~
-{: .language-python}
+</pre>
 
 > ## Use your sticky note
 >  Use a **green sticky note** to signal that you have successfully installed this package
@@ -127,7 +126,7 @@ import ipywidgets as widgets
 
 Now let's try different Selection widgets:
 
-~~~
+<pre data-executable="true" data-language="python">
 select = widgets.Select(
     options=['Finse Railway Station', 'Finse Research Centre'],
     value='Finse Research Centre',
@@ -137,8 +136,7 @@ select = widgets.Select(
 )
 
 display(select)
-~~~
-{: .language-python}
+</pre>
 
 ~~~
 radio = widgets.RadioButtons(
