@@ -126,7 +126,7 @@ rm -rf Snowpack*
 >
 > On Windows (to be done before you commit your file):
 > ~~~
-> git update-index --chmod=+x foo.sh
+> git update-index --chmod=+x postBuild
 > ~~~
 > {: .language-python}
 {: .callout}
