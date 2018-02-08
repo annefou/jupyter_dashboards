@@ -574,6 +574,11 @@ Laura wish to plot timeseries for different variables (such as temperature, wind
 Let's for instance retrieve `sonic temperature` (by convention sensor=`ds2_temp`) from `Hills` ('Sensor-5') from the 1st of December 2017 to the 1st of January 2018. We first create a request to remotely access data for download:
 
 ~~~
+import requests
+URL = 'http://hycamp.org/wsn/api/query/'
+token = 'dcff0c629050b5492362ec28173fa3e051648cb1'
+headers = {'Authorization': 'Token %s' % token}
+
 sensor = 'ds2_temp'
 
 # Finse station 'Hills'
