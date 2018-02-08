@@ -138,8 +138,12 @@ For more information on how to start Anaconda Navigator look [here](https://docs
 Open a Terminal and type:
 ~~~
 conda env create -f environment.yml
+
+source activate jupyter_dashboards_workshop
+
+jupyter notebook
 ~~~
-{: .language-bash} 
+{: .language-bash}
 
 #### From `Anaconda Navigator`
 
