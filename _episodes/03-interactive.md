@@ -607,6 +607,11 @@ Then we request data and plot:
 import plotly.offline as py
 import plotly.graph_objs as go
 
+import requests
+
+URL = 
+headers = 
+
 # To initialize plotly for notebook usage
 py.init_notebook_mode()
 
@@ -626,6 +631,9 @@ To add a legend, title to your plot:
 
 ~~~
 # To add a title, etc.
+
+station = 
+
 layout = go.Layout(
     title='Sonic Temperature from Finse Station '+station,
     xaxis=dict(
