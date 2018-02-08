@@ -52,6 +52,7 @@ dependencies:
   - notebook>5.2
   - jupyter_dashboards
   - jupyter_dashboards_bundlers
+  - matplotlib
   - folium
   - ipywidgets=7
   - qgrid
