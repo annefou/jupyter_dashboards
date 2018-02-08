@@ -133,6 +133,16 @@ For more information on how to start Anaconda Navigator look [here](https://docs
 
 ### Create a new conda environment "jupyter_dashboards_workshop"
 
+#### From the command line (Mac OSX and Linux)
+
+Open a Terminal and type:
+~~~
+conda env create -f environment.yml
+~~~
+{: .language-bash} 
+
+#### From `Anaconda Navigator`
+
 - Click on tab "Environments" (menu on the left hand side) and then "Import"
 
 <img src="images/create_conda_environment.png" style="width: 800px;"/>
