@@ -365,7 +365,7 @@ The purpose of this lesson was not to give you a full overview of existing packa
 <li><a href="https://seaborn.pydata.org/">seaborn</a>: statistical data visualization</li>
 <li><a href="http://pandas.pydata.org/">Pandas</a>: Dataframes</li>
 <li><a href="https://networkx.github.io/">networkx</a>: Graphs</li>
-<li><a href="https://github.com/yhat/ggpy">ggpy</a>: Python implementation of the grammar of graphics</li>
+<li><a href="https://plotnine.readthedocs.io/en/stable/">plotnine</a>: Python implementation of the grammar of graphics</li>
 <li><a href="https://github.com/DistrictDataLabs/yellowbrick">Yellow Brick</a></li>
 <li><a href="https://github.com/reiinakano/scikit-plot">scikit-plot</a></li>
 </ul>
